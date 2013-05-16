@@ -1,0 +1,10 @@
+.vert-navbar {
+
+}
+.vert-nav-element {
+  position:relative;
+  float:left;
+}
+.dropdown{
+	display:none;
+}

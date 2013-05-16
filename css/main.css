@@ -29,6 +29,8 @@
 @import "layout.css";
 @import "layout-print.css";
 @import "module-helper.css";
+@import "module-icons.css";
 @import "module-button.css";
-@import "module-global-nav.css";
+@import "module-vert-navbar.css";
+@import "module-vert-navbar--global-nav.css";
 @import "module-nivo-slider.css";

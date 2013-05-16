@@ -1,10 +1,10 @@
-<nav id="l-global-nav" class="l-vertical-nav global-nav">
+<nav id="l-global-nav" class="l-global-nav vert-navbar grey <?php if ( is_user_logged_in() ) { echo 'l-global-nav--logged-in'; } ?>">
   <div id="mega-drop-button" class="mega-drop-button"></div>
-	<div id="gn-bttons" class="nav-element gn-buttons">
+	<div id="gn-bttons" class="vert-nav-element gn-buttons">
     <ul id="quick-links" class="quick-links">
       <li>
-        <a class="rcc-blue button" href="#" id="global-myrcc">myRCC<span class="dropdown-arrow">&#9660;</span></a>
-        <div id="myrcc-dropdown" class="myrcc-dropdown">
+        <a class="rcc-blue button" href="#" id="global-myrcc">myRCC<span class="icon-dropdown-arrow">&#9660;</span></a>
+        <div id="myrcc-dropdown" class="dropdown myrcc-dropdown">
             <form class="login-form" method="POST" name="authx" action="https://rcc.my.vccs.edu/login" onsubmit="return myVCCSValidate();" id="login-form">
               <label>Username</label>
               <input type="text" name="vccs-id" id="vccs-id" tabindex="-1">
@@ -21,8 +21,8 @@
         </div>
       </li>
       <li><a class="pink button" href="/schedule" title="RCC Online Schedule">Classes</a></li>
-      <li><a class="green button" id="more-links" href="#">more<span class="dropdown-arrow">&#9660;</span></a>
-      <div id="more-links-dropdown" class="more-links-dropdown">
+      <li><a class="green button" id="more-links" href="#">more<span class="icon-dropdown-arrow">&#9660;</span></a>
+      <div id="more-links-dropdown" class="more-links-dropdown dropdown">
         <ul>
           <li><a  href="/safety" title="Campus Safety">Campus Safety</a></li>
           <li><a  href="/helpdesk" title="RCC Help Desk">Help Desk</a></li>
@@ -34,22 +34,22 @@
     </li>
     </ul><!--end quickLinks-->
   </div><!--end buttons-->
-  <div id="nav" class="nav nav-element ">
-    <h3 id="responsive-menu">Menu<span class="dropdown-arrow">&#9660;</span></h3>
+  <div id="nav" class="rcc-nav vert-nav-element ">
+    <h3 id="responsive-menu" class="dropdown">Menu<span class="icon-dropdown-arrow">&#9660;</span></h3>
     <div id="responsive-dropdown-menu" class="responsive-dropdown-menu">
-    <ul id="nav-bar" class="nav-bar">
-    	<li class="nav-element people-nav"><a id="people-nav" href="#" title="People" class="top-level">People |</a>
+    <ul id="main-architecture" class="vert-nav-element main-architecture">
+    	<li class="vert-nav-element people-nav"><a id="people-nav" href="#" title="People" class="top-level">Info for |</a>
       <div class="dropdown" id="people-nav-dropdown">
       	<ul>
-          <li><a href="/future" title="Future Students">Future Students</a></li> 
-          <li><a href="/current" title="Current Students">Current Students</a></li> 
+          <li><a href="/future" title="Future Students">Future Students</a></li>
+          <li><a href="/current" title="Current Students">Current Students</a></li>
           <li><a href="/parents" title="Parents">Parents</a></li>
           <li><a href="/workforce" title="Business and Community">Business &amp; Community</a></li> 
-          <li><a href="/friends" title="Friends and Alumni">Friends &amp; Alumni</a></li> 
+          <li><a href="/friends" title="Friends and Alumni">Friends &amp; Alumni</a></li>
           <li><a href="/employees" title="Faculty and Staff">Faculty &amp; Staff</a></li>
         </ul>
       </div> 
-      <li class="nav-element about-nav"><a id="about-nav" href="#" title="About" class="top-level">About |</a>
+      <li class="vert-nav-element about-nav"><a id="about-nav" href="#" title="About" class="top-level">About |</a>
       <div class="dropdown" id="about-nav-dropdown"> 
         <ul> 
           <li><a href="/catalog/about/who-we-are/">About RCC</a></li>	  					
@@ -90,7 +90,7 @@
           </ul> 
       </div><!--end about-nav--> 
       </li>    
-      <li class="nav-element academics-nav"><a id="academics-nav" href="#" title="Academics" class="top-level">Academics |</a> 
+      <li class="vert-nav-element academics-nav"><a id="academics-nav" href="#" title="Academics" class="top-level">Academics |</a> 
       <div class="dropdown" id="academics-nav-dropdown"> 
         <ul > 
           <li><a href="/academics/academic-advising">Academic Advising</a></li> 
@@ -119,7 +119,7 @@
           </ul> 
         </div><!--end academics-nav--> 
       </li>        
-      <li class="nav-element admissions-nav"><a id="admissions-nav" href="#" title="Admissions" class="top-level">Admissions |</a> 
+      <li class="vert-nav-element admissions-nav"><a id="admissions-nav" href="#" title="Admissions" class="top-level">Admissions |</a> 
         <div class="dropdown" id="admissions-nav-dropdown"> 
           <ul > 
             <li><a href="/admissions/apply-for-admission/">Apply</a></li> 
@@ -148,7 +148,7 @@
             </ul>    
       </div> <!--end admissions-nav--> 
       </li>       
-      <li class="nav-element departments-nav"><a id="departments-nav" href="#" title="Departments" class="top-level">Departments |</a> 
+      <li class="vert-nav-element departments-nav"><a id="departments-nav" href="#" title="Departments" class="top-level">Departments |</a> 
       <div class="dropdown" id="departments-nav-dropdown"> 
         <ul > 
           <li><a href="/academics">Academics</a></li> 
@@ -182,7 +182,7 @@
              </ul> 
       </div><!--end departments-nav--> 
       </li>        
-      <li class="nav-element library-nav"><a id="library-nav" href="#" title="Library" class="top-level">Library |</a> 
+      <li class="vert-nav-element library-nav"><a id="library-nav" href="#" title="Library" class="top-level">Library |</a> 
       <div class="dropdown" id="library-nav-dropdown"> 
         <ul > 
           <li><a href="/library">College Library</a></li> 
@@ -191,7 +191,7 @@
           </ul> 
       </div><!--end libraryNav--> 
       </li>        
-      <li class="nav-element workforce-nav"><a id="workforce-nav" href="#" title="Workforce" class="top-level">Workforce</a>
+      <li class="vert-nav-element workforce-nav"><a id="workforce-nav" href="#" title="Workforce" class="top-level">Workforce</a>
       <div class="dropdown" id="workforce-nav-dropdown"> 
         <ul> 
           <li><a href="/workforce/adult-educationged">Adult Education/GED</a></li> 
@@ -219,7 +219,7 @@
   </div>
   </div><!-- end nav --> 
    
-  <div id="accessibility" class="accessibility nav-element "> 
+  <div id="accessibility" class="accessibility vert-nav-element "> 
     <div id="site-search" class="site-search">
 	    <!-- <div id="cse-search-form" style="width: 100%;">Loading</div> -->
       <form action="http://www.google.com/cse" id="cse-search-box"> 
@@ -228,11 +228,11 @@
 			    <input type="hidden" name="ie" value="UTF-8" /> 
 			    <input class="search" type="text" name="q" tabindex="3" id="q" 
 	               autocomplete="off" accesskey="s"/> 
-        </div>       
-		    <div id="search-button" class="blue button search-button" >
-          <label for="q" id="qlabel">Search</label> 
-          <span id="search-icon" class="search-icon"></span>
-		      <input type="submit" id="search-submit" name="sa" value=" "  /> 
+        </div>
+		    <div id="search-button" class="rcc-blue button search-button" >
+          <label for="q" id="qlabel">Search</label>
+          <span id="search-icon" class="icon-search icon"></span>
+		      <input type="submit" id="search-submit" name="sa" value=" "  />
 			  </div>
 	    </form> 
     </div>

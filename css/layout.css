@@ -199,18 +199,27 @@
 *
 *   Major Layout Elements standard enough to not be modules
 *
+*   .l-gobal-nav
+*
+*
+*   .footer
 * -----------------------------------------------------------------*/
-.l-vertical-nav {
+
+.l-global-nav {
   z-index:98;
   height:30px;
   width:100%;
   padding:0;
   letter-spacing:1px;
+  font-size:11px;
+  position:fixed;
+  top:0;
 }
-.l-vertical-nav > .nav-element {
-  position:relative;
-  float:left;
+.l-global-nav--logged-in {
+  top:28px;
 }
+
+
 .footer {
   height: 50px;
   bottom: -50px;

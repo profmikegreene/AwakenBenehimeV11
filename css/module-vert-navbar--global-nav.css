@@ -1,0 +1,111 @@
+.l-global-nav:hover {
+	background:#575757;
+}
+.l-global-nav a,
+.l-global-nav a:hover,
+.l-global-nav a:visited,
+.l-global-nav a:active
+ {
+	color:#fff;
+}
+.l-global-nav a:hover {
+	border:none;
+}
+.l-global-nav ol,
+.l-global-nav ul {
+	margin:0;
+}
+.gn-buttons {
+	width:20%;
+}
+.quick-links {
+	position: relative;
+	margin:0 0 0 5px;
+	padding:0;
+	top:6px;
+}
+.quick-links > li {
+	float: left;
+	margin-right: 5px;
+}
+.rcc-nav {
+	width:60%;
+	line-height: 30px;
+}
+.main-architecture .top-level {
+	display: inline-block;
+	padding-right: 5px;
+}
+.people-nav a.top-level:hover,
+.people-nav a.active{
+	background:#000c15
+}
+.about-nav a.top-level:hover,
+.about-nav a.active {
+	background:#73cf00
+}
+.academics-nav a.top-level:hover,
+.academics-nav a.active {
+	background:#0073cf
+}
+.admissions-nav a.top-level:hover,
+.admissions-nav a.active {
+	background:#cf0073
+}
+.departments-nav a.top-level:hover,
+.departments-nav a.active {
+	background:#00b588
+}
+.library-nav a.top-level:hover,
+.library-nav a.active{
+	background:#a612d1
+}
+.workforce-nav a.top-level:hover,
+.workforce-nav a.active {
+	background:#cf5c00
+}
+
+.accessibility {
+	width:20%;
+}
+.accessibility form {
+	position: relative;
+	margin-top:3px;
+	float:right;
+}
+#cse-search-box div {
+	position:relative;
+	float: left;
+}
+#cse-search-box .search {
+	padding:5px;
+	color:#3a3a3a;
+	background:#fff;
+	border-radius:3px;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border:none;
+	outline: 0;
+}
+.search-button {
+	width:30px;
+	margin: 0 5px;
+	padding-top:3px;
+}
+#cse-search-box #search-submit {
+	padding:0;
+	margin: 0;
+	background:none;
+	border:none;
+	width:100%;
+}
+#qlabel {display:none;}
+.search-button > .icon {
+	right:12px;
+	top:4px;
+	position: absolute;
+	width:16px;
+	height:16px;
+	display:block;
+	z-index:9;
+}
