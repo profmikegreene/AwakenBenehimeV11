@@ -1,0 +1,187 @@
+/*
+ * Some styles based on HTML5 Boilerplate
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html,
+button,
+input,
+select,
+textarea {
+    color: #222;
+
+}
+
+body {
+    background: url('/wp-content/themes/AwakenBenehimeV10/images/gradientBkg2.jpg') 0 -20px fixed repeat-x; height:100%;
+    font: 300 1em/1.4 'Open Sans', "Segoe UI Light", "Segoe UI", "helvetica neue", Helvetica, Arial, sans-serif;
+}
+a {
+    color: #0073cf;
+    text-decoration:none;
+}
+a:hover,
+a:active,
+a:visited:hover {
+    color:#00b588;
+    border-bottom:1px dashed #00b588;
+}
+a:visited {
+    color:#a612d1;
+    text-decoration:none;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family:'Habibi', 'Arvo', 'Helvietica Neue', Arial, sans-serif;
+}
+/*
+ * Remove text-shadow in selection highlight: h5bp.com/i
+ * These selection rule sets have to be separate.
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    margin: 1em 0;
+    padding: 0;
+}
+
+/*
+ * Remove the gap between images and the bottom of their containers: h5bp.com/i/440
+ */
+
+img {
+    vertical-align: middle;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+    resize: vertical;
+}
+
+table {
+    width:100%;
+}
+
+/* ==========================================================================
+   Chrome Frame prompt
+   ========================================================================== */
+
+.chromeframe {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+/* ==================================================================
+*
+*   Colors
+*
+* -----------------------------------------------------------------*/
+.blue10 {
+    background:#d6e1eb;
+}
+.blue30,
+.blue10:hover {
+    background:#a6c9e5;
+}
+.blue60,
+.blue30:hover {
+    background:#5fa4db;
+}
+.rcc-blue,
+.blue60:hover {
+    background: #0073cf;
+}
+.blue130,
+.rcc-blue:hover {
+    background:#00457c;
+}
+.blue160,
+.blue130:hover {
+    background:#00233f;
+}
+.blue190,
+.blue160:hover {
+    background: #000c15;
+}
+.rcc-green {
+    background: #00b588;
+}
+.rcc-green:hover {
+    background: #007f5f;
+}
+.green {
+    background:#73cf00;
+}
+.green:hover {
+    background:#519100;
+}
+.orange {
+    background: #cf5c00;
+}
+.orange:hover {
+    background: #914100;
+}
+.purple {
+    background:#a612d1;
+}
+.purple:hover {
+    background: #750d93;
+}
+.pink {
+    background:#cf0073;
+}
+.pink:hover {
+    background:#910051;
+}
+.grey {
+    background:#575757;
+}
+.grey:hover {
+    background: #3d3d3d;
+}
+.dark-grey,
+.blue190:hover {
+    background:#333;
+}
+.dark-grey:hover {
+    background: #242424;
+}
+
+
+
+
