@@ -71,7 +71,7 @@ _Non-styled JavaScript Hooks_
 
 
 ##SQL
-   * SQL keywords must be all caps
+   * SQL keywords must be `ALL CAPS`
 
 ##Wordpress
    * Everywhere possible the theme should use the Wordpress dashboard for configuration and should not rely on direct code injection, i.e. the site should be able to function without the webmaster
