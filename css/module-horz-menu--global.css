@@ -1,0 +1,41 @@
+
+.horz-menu--global a {
+	color: #fff;
+}
+.horz-menu--global a:hover {
+	border-bottom: none;
+}
+.horz-menu-list-item {
+	margin:0 10px;
+}
+.horz-menu-list-item--why-rcc ul {
+	background: #a612d1;
+}
+.horz-menu-list-item--programs ul {
+	background: #cf5c00;
+}
+.horz-menu-list-item--get-started ul {
+	background: #0073cf;
+}
+.horz-menu-list-item--services ul {
+	background: #cf0073;
+}
+.horz-menu-list-item--explore ul {
+	background: #73cf00;
+}
+
+@media screen and (max-width: 767px) {
+    .horz-menu-list > li {
+        float: none;
+    }
+    .horz-menu-list ul {
+        display: block;
+        width: 100%;
+    }
+   .horz-menu-list > li.is-hover > ul , .horz-menu-list li li.is-hover ul {
+        position: static;
+    }
+    .is-active {
+        display: block;
+    }
+}

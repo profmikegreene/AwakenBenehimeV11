@@ -25,76 +25,59 @@ $(function() {
 		];
 	var $body = $('body');
 	var $global_nav = $('#global-nav');
+	var $window_width = document.body.clientWidth;
+
 /* ==================================================================
 *
-*   Initiation Dropdown menus used across the site
+*   .horz-menu--global Navigation Dropdown
 *
 * -----------------------------------------------------------------*/
-	$($dropdowns.join(', ')).click(function(e){
-		e.preventDefault();
-		//Define dropdown elements
-		var $current_id = $(this).attr('id');
-		var $dropdown_id = $(this).siblings('div').attr('id');
-
-		//Toggle states
-		if ($(this).hasClass('is-active')) {
-			hide_dropdown($current_id, $dropdown_id);
-		}else {
-			show_dropdown($current_id, $dropdown_id);
+	$(".horz-menu-list li a").each(function() {
+		if ($(this).next().length > 0) {
+			$(this).addClass("is-parent");
 		}
 	});
 
-/* ==================================================================
-*
-*   Shows invisiible mask to allow dropdowns to be cancelled by
-*   clicking anywhere in the browser window
-*
-* -----------------------------------------------------------------*/
-	function show_dropdown(d,e) {
+	$(".horz-menu-toggle").click(function(e) {
+		e.preventDefault();
+		$(this).toggleClass("is-active");
+		$(".horz-menu-list").toggle();
+	});
 
 
-		//Get the screen height and width
-		var mask_height = $(document).height();
-		var mask_width = $(window).width();
 
-		//Turn variables into jQuery selectors
-		d = '#'+d;
-		e = '#'+e;
+	$(window).bind('resize orientationchange', function() {
+		$window_width = document.body.clientWidth;
+		adjust_menu();
+	});
 
-		//Hide all other dropdowns
-		// if( $('#responsiveMenu').is(':visible')){
-		// 	$(d).siblings().hide().removeClass('activeDropdown');
-		// 	console.log('showDropdown if '+d+' '+e);
-		// }else {
-			$('div.is-active-dropdown').hide().siblings().removeClass('is-active');
-
-			console.log('show_dropdown else '+e);
-
-		// }
-		//Show current dropdown
-		$(d).addClass('is-active');
-		$(e).addClass('is-active-dropdown').show();
-
-		//Set mask size to fill up the whole screen and show mask
-		$mask.css({'width':mask_width,'height':mask_height}).show();
-	}//end showDropdown
-
-/* ==================================================================
-*
-*   Hides dropdown elements and mask
-*
-* -----------------------------------------------------------------*/
-	function hide_dropdown(d,e) {
-		//Turn variables into jQuery selectors
-		d = '#'+d;
-		e = '#'+e;
-		if(e!=='responsiveDropdownMenu'){
-			$(e).removeClass('is-active-dropdown').hide().removeClass('is-active');
-			console.log('hide_dropdown');
+	var adjust_menu = function() {
+		if ($window_width < 767) {
+			$(".horz-menu-toggle").css("display", "inline-block");
+			if (!$(".horz-menu-toggle").hasClass("is-active")) {
+				$(".horz-menu-list").hide();
+			} else {
+				$(".horz-menu-list").show();
+			}
+			$(".horz-menu-list li").unbind('mouseenter mouseleave');
+			$(".horz-menu-list li a.is-parent").unbind('click').bind('click', function(e) {
+				// must be attached to anchor element to prevent bubbling
+				e.preventDefault();
+				$(this).parent("li").toggleClass("is-hover");
+			});
 		}
-		$mask.hide();
-		$(d).removeClass('is-active');
-	}//end hideDropdown
+		else if ($window_width >= 767) {
+			$(".horz-menu-toggle").css("display", "none");
+			$(".horz-menu-list").show();
+			$(".horz-menu-list li").removeClass("is-hover");
+			$(".horz-menu-list li a").unbind('click');
+			$(".horz-menu-list li").unbind('mouseenter mouseleave').bind('mouseenter mouseleave', function() {
+				// must be attached to li so that mouseleave is not triggered when hover over submenu
+				$(this).toggleClass('is-hover');
+			});
+		}
+	};
+adjust_menu();
 /* ==================================================================
 *
 *   Allow users to click anywhere onscreen to remove dropdown

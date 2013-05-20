@@ -1,5 +1,7 @@
 <nav id="l-global-nav" class="l-global-nav vert-navbar grey <?php if ( is_user_logged_in() ) { echo 'l-global-nav--logged-in'; } ?>">
-  <div id="mega-drop-button" class="mega-drop-button"></div>
+  <div id="mega-drop-button" class="mega-drop-button">
+    <h3 id="responsive-menu" class="dropdown">Menu<span class="icon-dropdown-arrow">&#9660;</span></h3>
+  </div>
 	<div id="gn-bttons" class="vert-nav-element gn-buttons">
     <ul id="quick-links" class="quick-links">
       <li>
@@ -20,37 +22,13 @@
             </form>
         </div>
       </li>
-      <li><a class="pink button" href="/schedule" title="RCC Online Schedule">Classes</a></li>
-      <li><a class="green button" id="more-links" href="#">more<span class="icon-dropdown-arrow">&#9660;</span></a>
-      <div id="more-links-dropdown" class="more-links-dropdown dropdown">
-        <ul>
-          <li><a  href="/safety" title="Campus Safety">Campus Safety</a></li>
-          <li><a  href="/helpdesk" title="RCC Help Desk">Help Desk</a></li>
-          <li><a href="/directory" title="RCC Employee Directory">Directory</a></li>
-          <li><a href="http://assistive.usablenet.com/tt/http:/www.rappahannock.edu"
-           title="Text-Only Version">Text Only</a></li>
-      </ul>
-    </div>
-    </li>
     </ul><!--end quickLinks-->
   </div><!--end buttons-->
   <div id="nav" class="rcc-nav vert-nav-element ">
-    <h3 id="responsive-menu" class="dropdown">Menu<span class="icon-dropdown-arrow">&#9660;</span></h3>
     <div id="responsive-dropdown-menu" class="responsive-dropdown-menu">
     <ul id="main-architecture" class="vert-nav-element main-architecture">
-    	<li class="vert-nav-element people-nav"><a id="people-nav" href="#" title="People" class="top-level">Info for |</a>
-      <div class="dropdown" id="people-nav-dropdown">
-      	<ul>
-          <li><a href="/future" title="Future Students">Future Students</a></li>
-          <li><a href="/current" title="Current Students">Current Students</a></li>
-          <li><a href="/parents" title="Parents">Parents</a></li>
-          <li><a href="/workforce" title="Business and Community">Business &amp; Community</a></li> 
-          <li><a href="/friends" title="Friends and Alumni">Friends &amp; Alumni</a></li>
-          <li><a href="/employees" title="Faculty and Staff">Faculty &amp; Staff</a></li>
-        </ul>
-      </div> 
-      <li class="vert-nav-element about-nav"><a id="about-nav" href="#" title="About" class="top-level">About |</a>
-      <div class="dropdown" id="about-nav-dropdown"> 
+      <li class="vert-nav-element nav-why-rcc"><a id="nav-why-rcc" href="#" title="Why RCC?" class="top-level">Why RCC? |</a>
+      <div class="dropdown" id="nav__dropdown-why-rcc">
         <ul> 
           <li><a href="/catalog/about/who-we-are/">About RCC</a></li>	  					
           <li><a href="/about/academic-calendar/">Academic Calendar</a></li>					
