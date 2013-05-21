@@ -4,14 +4,19 @@
 // JavaScript Document
 /* <![CDATA[ */
 
-//Begin jQuery
+/* ==================================================================
+*
+*   //Begin jQuery
+*
+* -----------------------------------------------------------------*/
+
 $(function() {
 /* ==================================================================
 *
 *   Variables
 *
 * -----------------------------------------------------------------*/
-	var $mask = $('#mask');
+
 	var $dropdowns = [
 			'#global-myrcc',
 			'#more-links',
@@ -26,6 +31,7 @@ $(function() {
 	var $body = $('body');
 	var $global_nav = $('#global-nav');
 	var $window_width = document.body.clientWidth;
+	var $window_height = document.body.clientHeight;
 
 /* ==================================================================
 *
@@ -40,10 +46,11 @@ $(function() {
 
 	$(".horz-menu-toggle").click(function(e) {
 		e.preventDefault();
-		$(this).toggleClass("is-active");
+		$(this).toggleClass("is-active is-active-dropdown");
 		$(".horz-menu-list").toggle();
 	});
 
+	$('#gsc-i-id1').prop('placeholder', 'Search this site');
 
 
 	$(window).bind('resize orientationchange', function() {
@@ -63,7 +70,8 @@ $(function() {
 			$(".horz-menu-list li a.is-parent").unbind('click').bind('click', function(e) {
 				// must be attached to anchor element to prevent bubbling
 				e.preventDefault();
-				$(this).parent("li").toggleClass("is-hover");
+				$(this).parent("li").toggleClass("is-hover").siblings().removeClass('is-hover');
+
 			});
 		}
 		else if ($window_width >= 767) {
@@ -78,15 +86,7 @@ $(function() {
 		}
 	};
 adjust_menu();
-/* ==================================================================
-*
-*   Allow users to click anywhere onscreen to remove dropdown
-*
-* -----------------------------------------------------------------*/
-	$('#mask').click(function(e){
-		$('.activeDropdown, .activeResponsiveDropdown').hide().removeClass('activeResponsiveDropdown activeDropdown active').siblings().removeClass('active');
-		$(this).hide();
-	});
+
 });//end jQuery
 
 

@@ -1,41 +1,109 @@
-
-.horz-menu--global a {
+body {
+	margin-top: 40px;
+}
+.horz-menu--global {
+	position: fixed;
+	top: 0;
+	width: 100%;
+}
+.horz-menu--global:hover {
+	background:#575757;
+}
+.horz-menu--global a,
+.horz-menu--global button,
+.horz-menu--global label {
 	color: #fff;
+}
+.horz-menu--global label {
+	width:80px;
+	display: inline-block;
 }
 .horz-menu--global a:hover {
 	border-bottom: none;
+	color:#fff;
 }
-.horz-menu-list-item {
-	margin:0 10px;
+.horz-menu-toggle--global {
+	line-height: 40px;
 }
-.horz-menu-list-item--why-rcc ul {
-	background: #a612d1;
+.horz-menu-list--global {
+	width:100%;
 }
-.horz-menu-list-item--programs ul {
-	background: #cf5c00;
+.horz-menu-list--global li {
+	margin:0 5px;
 }
-.horz-menu-list-item--get-started ul {
+.horz-menu-list--global a {
+	padding:0 5px;
+}
+.horz-menu-list--global > .horz-menu-list-item {
+	line-height: 40px;
+}
+.horz-menu-list-item a:hover {
+	background:#575757;
+}
+.horz-menu-sublist--global-myrcc,
+.horz-menu-list-item-my-rcc > a:hover
+ {
 	background: #0073cf;
 }
-.horz-menu-list-item--services ul {
+.horz-menu-sublist--global-myrcc {
+	min-width:300px;
+}
+.myrcc-login-form input {
+	width:180px;
+}
+.horz-menu-list-item--why-rcc ul,
+.horz-menu-list-item--why-rcc > a:hover,
+.horz-menu-list-item--why-rcc.is-hover{
+	background: #a612d1;
+}
+.horz-menu-list-item--programs ul,
+.horz-menu-list-item--programs > a:hover,
+.horz-menu-list-item--programs.is-hover {
+	background: #cf5c00;
+}
+.horz-menu-list-item--get-started ul,
+.horz-menu-list-item--get-started > a:hover,
+.horz-menu-list-item--get-started.is-hover {
+	background: #5fa4db;
+}
+.horz-menu-list-item--services ul,
+.horz-menu-list-item--services > a:hover,
+.horz-menu-list-item--services.is-hover{
 	background: #cf0073;
 }
-.horz-menu-list-item--explore ul {
+.horz-menu-list-item--explore ul,
+.horz-menu-list-item--explore > a:hover,
+.horz-menu-list-item--explore.is-hover {
 	background: #73cf00;
+}
+.horz-menu-list-item--site-search {
+	width:200px;
+	height:40px;
+}
+.horz-menu .horz-menu-list-item--site-search {
+	float:right;
+}
+.horz-menu input.gsc-search-button {
+	background: #0073cf url('/wp-content/themes/AwakenBenehimeV11/img/search-icon.png') no-repeat center;
+	border:none;
+	top:5px;
+	position: relative;
+}
+.horz-menu .gsc-clear-button {
+	display:none;
 }
 
 @media screen and (max-width: 767px) {
-    .horz-menu-list > li {
-        float: none;
-    }
-    .horz-menu-list ul {
-        display: block;
-        width: 100%;
-    }
-   .horz-menu-list > li.is-hover > ul , .horz-menu-list li li.is-hover ul {
-        position: static;
-    }
-    .is-active {
-        display: block;
-    }
+	body {
+		margin-top: 0;
+	}
+	.horz-menu--global {
+		position:relative;
+	}
+	.horz-menu-list--global > .horz-menu-list-item {
+		line-height: auto;
+	}
+	.horz-menu-sublist--global-myrcc {
+		width:100%;
+	}
 }

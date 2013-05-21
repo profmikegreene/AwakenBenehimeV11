@@ -16,7 +16,7 @@
 *   190% Blue  : 000c15    //Use instead of black
 *
 *   Dark Grey  : 333333
-*   Medium Grey: 575757
+*   Grey  		 : 575757
 *
 *   Purple     : a612d1
 *   Orange     : cf5c00
@@ -33,6 +33,4 @@
 @import "module-button.css";
 @import "module-horz-menu.css";
 @import "module-horz-menu--global.css";
-@import "module-vert-navbar.css";
-@import "module-vert-navbar--global-nav.css";
 @import "module-nivo-slider.css";
