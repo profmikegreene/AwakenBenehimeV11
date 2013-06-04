@@ -26,11 +26,24 @@
 * -----------------------------------------------------------------*/
 @import "normalize.css";
 @import "base.css";
+
+/** Layouts **/
 @import "layout.css";
 @import "layout-print.css";
+
+/** Modules **/
 @import "module-helper.css";
 @import "module-icons.css";
 @import "module-button.css";
 @import "module-horz-menu.css";
 @import "module-horz-menu--global.css";
-@import "module-nivo-slider.css";
+@import "module-horz-menu--global-wp-menus.css";
+@import "module-billboard.css";
+@import "module-billboard--homepage.css";
+@import "module-cube.css";
+@import "module-nav-footer.css";
+
+
+
+/** Templates **/
+@import "template-front-page.css";

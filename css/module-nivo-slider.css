@@ -6,15 +6,17 @@
  * Free to use and abuse under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
  */
- 
+.nivo-wrapper {
+	position:relative;
+}
 /* The Nivo Slider styles */
-.nivoSlider {
+.nivo-slider {
 	position:relative;
 	width:100%;
 	height:auto;
 	overflow: hidden;
 }
-.nivoSlider img {
+.nivo-slider img {
 	position:absolute;
 	top:0px;
 	left:0px;
@@ -29,7 +31,7 @@
 	width:100%;
 }
 /* If an image is wrapped in a link */
-.nivoSlider a.nivo-imageLink {
+.nivo-slider a.nivo-imageLink {
 	position:absolute;
 	top:0px;
 	left:0px;
@@ -124,18 +126,18 @@ Author: Gilbert Pellegrom
 Author URI: http://dev7studios.com
 */
 
-.theme-default .nivoSlider {
+.theme-default .nivo-slider {
 	position:relative;
 	background:#fff url(/wp-content/themes/AwakenBenehimeV10/images/loading.gif) no-repeat 50% 50%;
 
 }
-.theme-default .nivoSlider img {
+.theme-default .nivo-slider img {
 	position:absolute;
 	top:0px;
 	left:0px;
 	display:none;
 }
-.theme-default .nivoSlider a {
+.theme-default .nivo-slider a {
 	border:0;
 	display:block;
 }

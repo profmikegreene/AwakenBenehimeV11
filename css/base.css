@@ -12,29 +12,40 @@ input,
 select,
 textarea {
     color: #222;
-
+    font-family: 'Open Sans', "Segoe UI Light", "Segoe UI", "helvetica neue", Helvetica, Arial, sans-serif;
 }
 
 body {
-    background: url('/wp-content/themes/AwakenBenehimeV10/images/gradientBkg2.jpg') 0 -20px fixed repeat-x; height:100%;
+    /*background: url('/wp-content/themes/AwakenBenehimeV10/images/gradientBkg2.jpg') 0 -20px fixed repeat-x; height:100%;*/
     font: 300 1em/1.4 'Open Sans', "Segoe UI Light", "Segoe UI", "helvetica neue", Helvetica, Arial, sans-serif;
 }
 a {
     color: #0073cf;
     text-decoration:none;
+    border-bottom:1px dashed #0073cf;
 }
 a:hover,
 a:active,
 a:visited:hover {
     color:#00b588;
-    border-bottom:1px dashed #00b588;
+    border-color:#00b588;
 }
 a:visited {
     color:#a612d1;
     text-decoration:none;
 }
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6,
+.big,
+.bigger,
+.biggest {
     font-family:'Habibi', 'Arvo', 'Helvietica Neue', Arial, sans-serif;
+}
+input:focus,
+input:active,
+textarea:focus,
+textarea:active {
+    outline:0;
+    color:#0073cf;
 }
 /*
  * Remove text-shadow in selection highlight: h5bp.com/i
@@ -111,70 +122,89 @@ table {
 *   Colors
 *
 * -----------------------------------------------------------------*/
-.blue10 {
+.blue10,
+.blue10.no-hover:hover {
     background:#d6e1eb;
 }
 .blue30,
+.blue30.no-hover:hover,
 .blue10:hover {
     background:#a6c9e5;
 }
 .blue60,
+.blue60.no-hover:hover,
 .blue30:hover {
     background:#5fa4db;
 }
 .rcc-blue,
+.rcc-blue.no-hover:hover,
 .blue60:hover {
     background: #0073cf;
 }
 .blue130,
+.blue130.no-hover:hover,
 .rcc-blue:hover {
     background:#00457c;
 }
 .blue160,
+.blue160.no-hover:hover,
 .blue130:hover {
     background:#00233f;
 }
 .blue190,
+.blue190.no-hover:hover,
 .blue160:hover {
     background: #000c15;
 }
-.rcc-green {
+.rcc-green,
+.rcc-green.no-hover:hover {
     background: #00b588;
 }
 .rcc-green:hover {
     background: #007f5f;
 }
-.green {
+.green,
+.green.no-hover:hover {
     background:#73cf00;
 }
 .green:hover {
     background:#519100;
 }
-.orange {
+.orange,
+.orange.no-hover:hover {
     background: #cf5c00;
 }
 .orange:hover {
     background: #914100;
 }
-.purple {
+.purple,
+.purple.no-hover:hover {
     background:#a612d1;
 }
 .purple:hover {
     background: #750d93;
 }
-.pink {
+.pink,
+.pink.no-hover:hover {
     background:#cf0073;
 }
 .pink:hover {
     background:#910051;
 }
-.grey {
+.white,
+.white.no-hover:hover, {
+    background:#fff;
+    color:#0073cf;
+}
+.grey,
+.grey.no-hover:hover {
     background:#575757;
 }
 .grey:hover {
     background: #3d3d3d;
 }
 .dark-grey,
+.dark-grey.no-hover:hover,
 .blue190:hover {
     background:#333;
 }

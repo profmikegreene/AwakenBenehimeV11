@@ -197,6 +197,89 @@
 
 /* ==================================================================
 *
+*   Responsive Grid
+*
+* -----------------------------------------------------------------*/
+@media only screen and (min-width: 720px) and (max-width: 980px) {
+/* Containers
+  ----------------------------------------------------------------------------------------------------*/
+  .container {
+      width: 720px;
+  }
+
+  /* `Grid >> 12 Columns
+  ----------------------------------------------------------------------------------------------------*/
+
+  .container .grid-1 {
+    width: 40px;
+  }
+  .container .grid-2 {
+    width: 100px;
+  }
+  .container .grid-25 {
+    width:130px;
+  }
+  .container .grid-3 {
+    width: 160px;
+  }
+  .container .grid-4 {
+    width: 220px;
+  }
+  .container .grid-5 {
+    width: 280px;
+  }
+  .container .grid-6 {
+    width: 340px;
+  }
+  .container .grid-7 {
+    width: 400px;
+  }
+  .container .grid-8 {
+    width: 460px;
+  }
+  .container .grid-9 {
+    width: 520px;
+  }
+  .container .grid-10 {
+    width: 580px;
+  }
+  .container .grid-11 {
+    width: 640px;
+  }
+  .container .grid-12 {
+    width: 700px;
+  }
+}
+@media only screen and (max-width: 719px) {
+  .container {
+    width:100%;
+  }
+  .container .grid-1,
+  .container .grid-2,
+  .container .grid-25,
+  .container .grid-3,
+  .container .grid-4,
+  .container .grid-5,
+  .container .grid-6,
+  .container .grid-7,
+  .container .grid-8,
+  .container .grid-9,
+  .container .grid-10,
+  .container .grid-11,
+  .container .grid-12{
+    width: 96%;
+    margin-left:1%;
+    margin-right:1%;
+    padding-left:1%;
+    padding-right:1%;
+  }
+  .container .grid-25,
+  .container .grid-3 {
+    width:46%;
+  }
+}
+/* ==================================================================
+*
 *   Major Layout Elements standard enough to not be modules
 *
 *   .l-gobal-nav
@@ -218,10 +301,18 @@
 .l-global-nav--logged-in {
   top:28px;
 }
-
+.background-block {
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  top:0;
+}
 
 .footer {
+  background: #00233f;
   height: 50px;
   bottom: -50px;
   position: relative;
+  padding: 5px;
+  margin:-45px 5px 0;
 }

@@ -1,0 +1,36 @@
+.billboard-full-width .rsBullets {
+	position:absolute;
+	bottom:5%;
+	width:100px;
+	right:3%;
+}
+
+.billboard-full-width .rsBullet span {
+	background:#fff;
+	width:12px;
+	height:12px;
+}
+.billboard-full-width .rsBullet.rsNavSelected span {
+	background:#0074cf;
+}
+.billboard-caption > .container{
+	top:10%;
+}
+.billboard-caption .rcc-blue{
+	background:#0073cf;
+	background:rgba(0, 115, 207, 0.9);
+}
+.billboard-caption .green{
+	background:#73cf00;
+	background:rgba(115, 207, 0, 0.9);
+}
+.billboard-caption .pink{
+	background:#cf0073;
+	background:rgba(207, 0, 115, 0.9);
+}
+.billboard-caption-content {
+	width:320px;
+	height:240px;
+	padding:5px 10px;
+	margin:0 5px;
+}

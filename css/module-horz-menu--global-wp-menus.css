@@ -1,0 +1,20 @@
+.horz-menu--global .horz-menu-sublist {
+float:left;
+margin-bottom:-1000px;
+padding-bottom: 1000px;
+}
+.horz-menu--global .widget-area {
+	width:300px;
+}
+.horz-menu--global .horz-menu-dropdown {
+	width:540px;
+	overflow: hidden;
+}
+.horz-menu--global .widget {
+	padding:10px;
+	color:#fff;
+}
+.horz-menu--global .widget-title {
+	margin:0;
+	line-height: 1em;
+}
