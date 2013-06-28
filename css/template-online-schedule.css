@@ -1,4 +1,9 @@
-.schedule .site-content {
+/*.schedule .horz-menu--options-bar,*/
+.schedule .content {
 	top:-200px;
-	margin-bottom: -100px;
+	margin-bottom: -200px;
+	position: relative;
+}
+.schedule .instructions {
+	display: none;
 }

@@ -18,9 +18,9 @@ get_header(); ?>
 				<div class="billboard blue30 no-hover billboard-full-width no-post-thumbnail" id="billboard">
 				</div>
 <?php } ?>
-<div id="primary" class="site-content container clearfix" role="main">
+<div id="primary" class="site-content" role="main">
 
-
+<div id="content" class="content container clearfix" role="main">
 <div id="horz-menu--options-bar" class="grid-12 horz-menu horz-menu--options-bar">
 	<ul id="links" class="horz-menu-list grid-3">
 	  <li class="horz-menu-list-item" title="Quick Links">
@@ -97,18 +97,18 @@ get_header(); ?>
 	  </li>
 	</ul>
 </div><!--end optionsBar -->
-<div id="content" class="content" role="main">
-<div id="classContent">
-  <div id="seminstructions"><span></span><p>Please select a semester</p></div>
-  <div id="subinstructions"><span></span><p>Please select a subject</p></div>
-  <div id="optinstructions"><span></span><p>May help narrow your search</p></div>
-  <img src="/wp-content/themes/ReConstruct10Schedule/images/ajax-loader.gif" alt="loading" id="loading" />
+
+<div id="classContent" class="container clearfix containter-classes">
+  <div id="seminstructions" class="instructions"><span></span><p>Please select a semester</p></div>
+  <div id="subinstructions" class="instructions"><span></span><p>Please select a subject</p></div>
+  <div id="optinstructions" class="instructions"><span></span><p>May help narrow your search</p></div>
+  <!-- <img src="/wp-content/themes/ReConstruct10Schedule/images/ajax-loader.gif" alt="loading" id="loading" /> -->
   <ul id="classList" class="hidden">
 	 <!--Enter Subject Data -->
 	</ul><!--end course list ul-->
   <div id="calendar"></div>
   </div><!--end classContent -->
-  <div id="container-cubes" class="">
+	<div class="container clearfix container-cubes">
 			<?php
 			$args= array(
 					'post_type'=>'cubes',
@@ -160,7 +160,7 @@ get_header(); ?>
 			<?php isset($cubes['10']) ? ab11_cubes_output($cubes['10']) : NULL; ?>
 			<?php isset($cubes['11']) ? ab11_cubes_output($cubes['11']) : NULL; ?>
 			<?php isset($cubes['12']) ? ab11_cubes_output($cubes['12']) : NULL; ?>
-		</div><!--end container-cubes-->
+	</div><!--end .container-cubes-->
 
 
 </div><!--end .content -->
