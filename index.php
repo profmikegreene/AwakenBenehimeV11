@@ -16,16 +16,17 @@
 
 get_header(); ?>
 
-    <div id="primary" class="site-content">
+    <div id="primary" class="site-content container clearfix">
         <div id="content" role="main">
                 <?php if ( have_posts() ) : ?>
 
             <?php /* Start the Loop */ ?>
             <?php while ( have_posts() ) : the_post(); ?>
-            <div class="container clearfix">
+            <div class="grid-8">
                 <?php get_template_part( 'content', 'page'); ?>
-                <?php get_sidebar(); ?>
-            </div><!-- .container -->
+                <?php comments_template( '', true ); ?>
+                
+            </div><!-- .grid-8 -->
             <?php endwhile; ?>
 
         <?php else : ?>

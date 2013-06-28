@@ -2,6 +2,20 @@
  * Some styles based on HTML5 Boilerplate
  */
 
+/* ==================================================================
+*
+*   Dev styles for testing. NOT FOR PRODUCTION
+*
+* -----------------------------------------------------------------*/
+
+body:hover,
+#content:hover {
+    background: url(../img/grid-bkg.png) center 37px repeat-y;
+}
+* {
+    /*opacity: .95;*/
+}
+
 /* ==========================================================================
    Base styles: opinionated defaults
    ========================================================================== */
@@ -12,12 +26,12 @@ input,
 select,
 textarea {
     color: #222;
-    font-family: 'Open Sans', "Segoe UI Light", "Segoe UI", "helvetica neue", Helvetica, Arial, sans-serif;
+    font-family: "Source Sans Pro", "Segoe UI Light", "Segoe UI", "helvetica neue", Helvetica, Arial, sans-serif;
 }
 
 body {
     /*background: url('/wp-content/themes/AwakenBenehimeV10/images/gradientBkg2.jpg') 0 -20px fixed repeat-x; height:100%;*/
-    font: 300 1em/1.4 'Open Sans', "Segoe UI Light", "Segoe UI", "helvetica neue", Helvetica, Arial, sans-serif;
+    font: 400 1em/1.5 "Source Sans Pro", "Segoe UI Light", "Segoe UI", "helvetica neue", Helvetica, Arial, sans-serif;
 }
 a {
     color: #0073cf;
@@ -38,8 +52,11 @@ h1, h2, h3, h4, h5, h6,
 .big,
 .bigger,
 .biggest {
-    font-family:'Habibi', 'Arvo', 'Helvietica Neue', Arial, sans-serif;
+    font-family: 'Arvo', 'Helvietica Neue', Arial, sans-serif;
+    margin:0 0 24px;
+    font-weight: bold;
 }
+
 input:focus,
 input:active,
 textarea:focus,
@@ -72,7 +89,7 @@ hr {
     height: 1px;
     border: 0;
     border-top: 1px solid #ccc;
-    margin: 1em 0;
+    margin: 24px 0;
     padding: 0;
 }
 
@@ -104,6 +121,16 @@ textarea {
 
 table {
     width:100%;
+}
+
+address {
+    margin-bottom: 24px;
+}
+
+pre,
+code {
+  font-size: .8125em; /* 13x --> 13 ÷ 16  */
+  line-height: 1.8461em; /* 24px --> 24 ÷ 13  */
 }
 
 /* ==========================================================================
@@ -192,12 +219,18 @@ table {
     background:#910051;
 }
 .white,
-.white.no-hover:hover, {
+.white.no-hover:hover,
+.white a {
     background:#fff;
     color:#0073cf;
 }
+.light-grey,
+.light-grey.no-hover:hover {
+    background:#ddd;
+}
 .grey,
-.grey.no-hover:hover {
+.grey.no-hover:hover,
+.light-grey:hover {
     background:#575757;
 }
 .grey:hover {

@@ -1,0 +1,119 @@
+.widget-area--sidebar {
+	margin-top: 24px;
+}
+.widget-area--sidebar .widget {
+	margin-bottom: 23px;
+	padding-bottom: 1px;
+}
+.widget-area--sidebar li {
+	list-style: none;
+}
+.widget-area--sidebar ul,
+.widget-area--sidebar ol,
+.widget-area--sidebar .widget-title,
+.widget-area--sidebar .textwidget {
+	padding-left: 20px;
+	padding-right:20px;
+}
+.widget-area--sidebar a {
+	border-bottom: none;
+}
+.widget-area--sidebar a:visited {
+	color:#0073cf;
+}
+.widget-area--sidebar .widget-title {
+	color: #fff;
+	padding-top:6px;
+	padding-bottom: 6px;
+	margin-bottom: 12px;
+}
+
+/* ==================================================================
+*
+*   Sidebar Menu
+*
+* -----------------------------------------------------------------*/
+.vert-menu--sidebar .sub-menu {
+	margin-bottom: 0;
+  position: absolute;
+  left: -9999px;
+  padding-right: 0;
+}
+.vert-menu--sidebar ol,
+.vert-menu--sidebar ul {
+	margin:0;
+}
+
+.vert-menu--sidebar .is-hover {
+	left:0;
+	position: relative;
+}
+.vert-menu--sidebar a:hover {
+	text-decoration: underline;
+}
+.vert-menu--sidebar > li > a {
+    display: inline-block;
+}
+.is-hover > .sub-menu {
+    left: auto;
+    position: relative;
+}
+.vert-menu--sidebar .sub-menu a {
+    position: relative;
+}
+.vert-menu--sidebar .icon-r-dropdown-arrow,
+.vert-menu--sidebar .icon-l-dropdown-arrow {
+	position: relative;
+	float: right;
+	display: inline-block;
+}
+
+/* ==================================================================
+*
+*   Text Widgets
+*
+* -----------------------------------------------------------------*/
+.widget-area--sidebar .widget_text {
+	background: #fff;
+}
+.widget-area--sidebar .widget_text .widget-title {
+	background: #0073cf;
+}
+/* ==================================================================
+*
+*   Highlight Widget
+*
+* -----------------------------------------------------------------*/
+.widget-highlight img {
+	width:100%;
+}
+.widget-highlight .widget-title {
+	margin:6px 0;
+}
+.widget-highlight.rcc-blue,
+.widget-highlight.rcc-green,
+.widget-highlight.green,
+.widget-highlight.orange,
+.widget-highlight.pink,
+.widget-highlight.purple,
+.widget-highlight.blue60,
+.widget-highlight.blue130,
+.widget-highlight.blue160,
+.widget-highlight.blue190,
+.widget-highlight.grey,
+.widget-highlight.dark-grey {
+	color: #fff;
+}
+.widget-highlight.blue10 .widget-title,
+.widget-highlight.blue30 .widget-title {
+	color:#222;
+}
+
+/* ==================================================================
+*
+*   Banner Widget
+*
+* -----------------------------------------------------------------*/
+.widget-banner img {
+	width:100%;
+}

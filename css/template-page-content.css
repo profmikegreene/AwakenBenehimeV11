@@ -1,0 +1,126 @@
+/* ==================================================================
+*
+*   Create typographic vertical rhythm
+*
+* -----------------------------------------------------------------*/
+.site-content table {
+  font-size: .8125em; /* 13x --> 13 ÷ 16  */
+  line-height: 1.8461em; /* 24px --> 24 ÷ 13  */
+}
+
+.site-content tr:nth-child(even){
+  background:#f3f3f3;
+}
+.site-content th {
+      font-family: "Source Sans Pro", "Segoe UI Bold", "helvetica neue", Helvetica, Arial, sans-serif;
+      font-weight: 700;
+      text-align: left;
+}
+.site-content td,
+.site-content th {
+  padding:0;
+  vertical-align: top;
+}
+.site-content img {
+  max-width: 620px;
+}
+.site-content .wp-caption-text {
+  position: relative;
+  background: #0073cf;
+  color: white;
+  padding: 10px;
+  margin-bottom:24px;
+  max-width: 600px;
+}
+.alignleft .wp-caption-text,
+.alignright .wp-caption-text {
+  margin-bottom: 0;
+}
+.site-content .wp-caption-text a {
+  color:#fff;
+  border-color:#fff;
+}
+.site-content .alignleft {
+    margin: 8px 16px 8px 0;
+}
+.site-content .alignright {
+    margin: 8px 0 8px 16px;
+}
+
+/*End vertical rhythm styles*/
+
+/* ==================================================================
+*
+*   Breadcrumbs, using YOAST plugin
+*
+* -----------------------------------------------------------------*/
+.breadcrumbs {
+  padding:12px 20px;
+  font-size: .75em; /* 13x --> 13 ÷ 16  */
+  line-height: 2em; /* 24px --> 24 ÷ 13  */
+  margin-bottom: 0;
+}
+.breadcrumbs .separator {
+  padding:.5em;
+}
+
+/* ==================================================================
+*
+*   Article Content Styles
+*
+* -----------------------------------------------------------------*/
+
+.template-page {
+  background: #f9f9f9; /* Old browsers */
+  background: -moz-linear-gradient(left,  #ffffff 50%, #f9f9f9 50%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right top, color-stop(50%,#ffffff), color-stop(50%,#f9f9f9)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left,  #ffffff 50%,#f9f9f9 50%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left,  #ffffff 50%,#f9f9f9 50%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left,  #ffffff 50%,#f9f9f9 50%); /* IE10+ */
+  background: linear-gradient(to right,  #fff 0%, #fff 50%,#f9f9f9 50%, #f9f9f9 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f9f9f9',GradientType=1 ); /* IE6-9 */
+}
+.template-page .content {
+  background:#fff;
+  color:#333;
+  position: relative;
+}
+.template-page .content {
+  top:-68px;
+  margin-bottom:-68px;
+}
+.template-page .logo {
+  text-indent: -999em;
+  z-index: 9;
+}
+.template-page .logo {
+  position: absolute;
+  top: -140px;
+}
+.template-page .type-page {
+  padding:20px;
+}
+.template-page blockquote {
+  margin-left: -60px;
+  padding: 24px 0 24px 20px;
+  position: relative;
+  color:#00457c;
+}
+.template-page blockquote:before {
+  background: #00b588; /* Old browsers */
+background: -moz-linear-gradient(top,  #cf5c00 25%, #914100 25%, #914100 50%, #0073cf 51%, #0073cf 75%, #00457c 75%, #00457c 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(25%,#00b588), color-stop(25%,#914100), color-stop(50%,#914100), color-stop(51%,#0073cf), color-stop(75%,#0073cf), color-stop(75%,#00457c), color-stop(100%,#00457c)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #cf5c00 25%,#914100 25%,#914100 50%,#0073cf 51%,#0073cf 75%,#00457c 75%,#00457c 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #cf5c00 25%,#914100 25%,#914100 50%,#0073cf 51%,#0073cf 75%,#00457c 75%,#00457c 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #cf5c00 25%,#914100 25%,#914100 50%,#0073cf 51%,#0073cf 75%,#00457c 75%,#00457c 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #cf5c00 25%,#914100 25%,#914100 50%,#5fa4db 51%,#5fa4db 75%,#0073cf 75%,#0073cf 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cf5c00', endColorstr='#00457c',GradientType=0 ); /* IE6-9 */
+content: ' ';
+display: block;
+height: 100%;
+left: 0;
+position: absolute;
+top: 0;
+width: 3px;
+}
+

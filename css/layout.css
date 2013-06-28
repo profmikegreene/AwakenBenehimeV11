@@ -197,6 +197,35 @@
 
 /* ==================================================================
 *
+*   Major Layout Elements standard enough to not be modules
+*
+*   .l-gobal-nav
+*
+*
+*   .footer
+* -----------------------------------------------------------------*/
+
+.l-global-nav {
+  z-index:98;
+  height:30px;
+  width:100%;
+  padding:0;
+  letter-spacing:1px;
+  font-size:11px;
+  position:fixed;
+  top:0;
+}
+.l-global-nav--logged-in {
+  top:28px;
+}
+.footer {
+  height: 60px;
+  margin: 0 5px;
+  padding: 5px;
+}
+
+/* ==================================================================
+*
 *   Responsive Grid
 *
 * -----------------------------------------------------------------*/
@@ -249,8 +278,9 @@
   .container .grid-12 {
     width: 700px;
   }
+
 }
-@media only screen and (max-width: 719px) {
+@media only screen and (max-width: 822px) {
   .container {
     width:100%;
   }
@@ -277,42 +307,9 @@
   .container .grid-3 {
     width:46%;
   }
-}
-/* ==================================================================
-*
-*   Major Layout Elements standard enough to not be modules
-*
-*   .l-gobal-nav
-*
-*
-*   .footer
-* -----------------------------------------------------------------*/
+  .site-content {
+    padding-top: 0;
+  }
+}/* END RESPSONSIVE */
 
-.l-global-nav {
-  z-index:98;
-  height:30px;
-  width:100%;
-  padding:0;
-  letter-spacing:1px;
-  font-size:11px;
-  position:fixed;
-  top:0;
-}
-.l-global-nav--logged-in {
-  top:28px;
-}
-.background-block {
-  position: absolute;
-  z-index: 0;
-  width: 100%;
-  top:0;
-}
 
-.footer {
-  background: #00233f;
-  height: 50px;
-  bottom: -50px;
-  position: relative;
-  padding: 5px;
-  margin:-45px 5px 0;
-}

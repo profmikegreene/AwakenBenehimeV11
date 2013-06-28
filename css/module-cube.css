@@ -52,7 +52,18 @@ a.cube:hover {
 	list-style: none;
 	margin-bottom:10px;
 }
-
+.cube.height-1 {
+	height:80px;
+}
+.cube.height-2 {
+	height:180px;
+}
+.cube.height-3 {
+	height:280px;
+}
+.cube.height-4 {
+	height:380px;
+}
 /* ==================================================================
 *
 *   Responsive Styles
@@ -65,5 +76,7 @@ a.cube:hover {
 }
 @media only screen and (max-width: 719px) {
 	.cube {
+		height:auto;
+		min-height: 80px;
 	}
 }

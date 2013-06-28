@@ -1,26 +1,36 @@
+.template-front-page {
+	background: none;
+}
+/*.template-front-page.logged-in .site-content {
+	padding-top: 40px;
+}*/
+.template-front-page .site-content img {
+  max-width: 100%;
+}
 .template-front-page .logo {
 	background:url('/wp-content/themes/AwakenBenehimeV11/img/rccLogo-white.png') no-repeat;
 	height:60px;
 	text-indent: -999%;
 }
-.template-front-page .background-block {
-	height:55%;
-}
+
 .template-front-page .billboard {
-	margin-top: 40px;
 	padding:3.5% 0;
 	padding:10px 0;
 	position: relative;
+	overflow: inherit;
 }
-.template-front-page .container-main {
+.template-front-page .container-cubes{
 	margin-top: 5px;
+	z-index: 20;
+}
+.template-front-page .cube5 {
+	top:-80px;
 }
 .template-front-page .active-data-embed,
 .template-front-page .important-links {
 	height:380px;
 }
 .template-front-page .important-links a:hover {
-	x-background:#fff;
 	color:#575757;
 }
 .template-front-page .potential-course {
@@ -30,11 +40,12 @@
 .template-front-page .potential-course:hover {
 	background:#575757;
 }
-.template-front-page .rappenings {
+.template-front-page .rappening-title{
 	text-transform: uppercase;
 	text-align: right;
+	padding:0;
 }
-.template-front-page .rappenings .tagline {
+.template-front-page .rappening-title .tagline {
 	text-transform: none;
 }
 .template-front-page .rappening {
@@ -51,72 +62,7 @@
 .template-front-page .cube.rappening:hover {
 	color:#575757;
 }
-.template-front-page .cube-contact {
-	height:300px;
-}
-.template-front-page .contact-info {
-	width:50%;
-}
-.template-front-page .cube-social {
-	height:140px;
-	background-color:#0073cf;
-	background-image: url('/wp-content/themes/AwakenBenehimeV11/img/socialicons.png');
-	border-bottom: none;
-}
-.template-front-page .name,
-.template-front-page .phone,
-.template-front-page .address {
-	margin:0;
-}
-.template-front-page .name {
-	font-weight: 700;
-}
 
-.cube13:hover{
-	background-color: #3b5998;
-	background-position: 0 -150px;
-}
-.cube14 {
-	background-position: -150px 0;
-}
-.cube14:hover {
-	background-color: #33ccff;
-	background-position:-150px -150px;
-}
-.cube15 {
-	background-position: -300px 0;
-}
-.cube15:hover {
-	background-color: #c1302a;
-	background-position: -300px -150px;
-}
-.cube16 {
-	background-position: -450px 0;
-}
-.cube16:hover {
-	background-color: #ed812f;
-	background-position: -450px -150px;
-}
-.cube17 {
-	background-position: -600px 0;
-}
-.cube17:hover {
-	background-color:#333;
-	background-position: -600px -150px;
-}
-.cube18 {
-	background-position: -750px 0;
-}
-.cube18:hover {
-	background-color: #29bb4e;
-	background-position: -750px -150px;
-}
-.cube-sitemap {
-	height:300px;
-}
-.cube-sitemap a:hover{
-	border-bottom:none;
-}
 
 
 /* ==================================================================
@@ -124,82 +70,86 @@
 *   Responsive Styles
 *
 * -----------------------------------------------------------------*/
-@media only screen and (min-width: 720px) and (max-width: 980px) {
-	.template-front-page .potential-course {
-		font-size: .8em;
+
+@media only screen and (max-width: 822px) {
+	.template-front-page {
+		font-size: .9em;
+	}
+	/*.template-front-page	.horz-menu--global {
+		margin-bottom:-40px;
+	}*/
+	.template-front-page .billboard {
+		padding: 0;
+	}
+	.template-front-page .logo {
+		height:40px;
+		background-size: 147px 40px;
+		margin:5px 0;
+	}
+	.template-front-page .cube10,
+	.template-front-page .cube9 {
+		min-height:168px;
+	}
+
+	.template-front-page .rappening-title {
+		width: 100%;
+		text-align: left;
+	}
+	.template-front-page .rappening,
+	.template-front-page .rappening-title {
+		width:96%;
+		padding: 0;
+		height:auto;
+	}
+	.template-front-page .rappening img {
+		display: block;
+	}
+}
+@media only screen and (min-width: 823px) and (max-width: 980px) {
+	.template-front-page {
+		font-size: .9em;
 	}
 	.template-front-page .rappening,
 	.template-front-page .rappening img {
 		width:170px;
 	}
-	.cube13 {
-    background-position: -40px 0;
-  }
-  .cube13:hover {
-    background-position: -40px -150px;
-  }
-  .cube14 {
-    background-position: -190px 0;
-  }
-  .cube14:hover {
-    background-position: -190px -150px;
-  }
-  .cube15 {
-    background-position: -340px 0;
-  }
-  .cube15:hover {
-    background-position: -340px -150px;
-  }
-  .cube16 {
-    background-position: -490px 0;
-  }
-  .cube16:hover {
-    background-position: -490px -150px;
-  }
-  .cube17 {
-    background-position: -640px 0;
-  }
-  .cube17:hover {
-    background-position: -640px -150px;
-  }
-  .cube18 {
-    background-position: -790px 0;
-  }
-  .cube18:hover {
-    background-position: -790px -150px;
-  }
-}
-@media only screen and (max-width: 719px) {
-	.template-front-page .rappening {
-		width:46%;
-	}
-	.template-front-page .rappening img {
-		display: block;
-	}
-	.template-front-page .cube-social {
-		width:28.6666667%;
-		max-width: 135px;
-	}
-	.template-front-page .cube-sitemap,
-	.template-front-page .footer,
-	.template-front-page .footer ul {
-		height: auto;
-	}
-	.template-front-page .footer {
-		bottom:auto;
-		margin-top: auto;
+	.template-front-page	.horz-menu--global {
+		margin-bottom:-40px;
 	}
 }
-@media only screen and (min-width: 1280px) {
+@media only screen and (min-width: 1024px) and (max-width: 1365px) {
 	.template-front-page .billboard {
 		padding-bottom: 0;
 	}
-	.template-front-page .container-main {
-		top:-110px;
+	.template-front-page .container-cubes {
+		top:-100px;
+		margin-bottom:-100px;
 	}
-
-	/*.template-front-page .cube3 {
-		height:80px;
-
-	}*/
+	.template-front-page .cube1,
+	.template-front-page .cube2,
+	.template-front-page .cube3{
+		opacity: .9;
+	}
 }
+@media only screen and (min-width: 1366px) and (max-width: 1679px){
+	.template-front-page .billboard {
+		padding-bottom: 0;
+	}
+	.template-front-page .container-cubes {
+		top:-200px;
+		margin-bottom: -200px;
+	}
+	.template-front-page .cube1,
+	.template-front-page .cube2,
+	.template-front-page .cube3,
+	.template-front-page .cube4,
+	.template-front-page .cube5 {
+		opacity: .9;
+	}
+}
+@media only screen and (min-width: 1680px) {
+	.template-front-page .container-cubes {
+		top:-20em;
+		margin-bottom: -20em;
+	}
+	}

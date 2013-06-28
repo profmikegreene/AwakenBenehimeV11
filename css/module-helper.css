@@ -99,15 +99,37 @@
     *zoom: 1;
 }
 
-.float-left {
+/* ==================================================================
+*
+*   Wordpress helper classes
+*
+* -----------------------------------------------------------------*/
+.aligncenter {
+    margin-left:auto;
+    margin-right:auto;
+}
+.float-left,
+.alignleft {
     float: left;
 }
-.float-right {
+
+.clear-left {
+    clear:left;
+}
+.float-right,
+.alignright {
     float:right;
+}
+
+.clear-right {
+    clear:right;
 }
 .display-block {
     display:block;
 }
 .no-margin {
     margin:0;
+}
+#wpadminbar {
+    /*margin-bottom:28px;*/
 }

@@ -10,6 +10,9 @@ padding-bottom: 1000px;
 	width:540px;
 	overflow: hidden;
 }
+.horz-menu--global .horz-menu-dropdown--wide {
+	width:780px;
+}
 .horz-menu--global .widget {
 	padding:10px;
 	color:#fff;
@@ -17,4 +20,20 @@ padding-bottom: 1000px;
 .horz-menu--global .widget-title {
 	margin:0;
 	line-height: 1em;
+}
+.horz-menu--global .textwidget {
+	line-height: 1.5em;
+}
+.horz-menu--global .textwidget a {
+	display: inline;
+	padding:0;
+	border-bottom:1px dashed;
+}
+.horz-menu--global .textwidget a:hover {
+	background:none;
+	border-bottom: 1px solid;
+	}
+.horz-menu--global .widget-image {
+	width:280px;
+	margin:5px 0;
 }

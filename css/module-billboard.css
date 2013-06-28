@@ -1,3 +1,33 @@
+.billboard-full-width {
+	overflow: hidden;
+	height: auto;
+}
+.has-post-thumbnail .attachment-billboard-page {
+	width:100%;
+	height: auto;
+}
+.billboard.no-post-thumbnail,
+.billboard.no-post-thumbnail:hover {
+	background: #a6c9e5 url(../img/tiles.png) repeat-x center 5px;
+	height: 250px;
+}
+
+@media only screen and (min-width: 1366px) {
+	.billboard-full-width {
+		height: 360px;
+	}
+}
+@media only screen and (max-width: 822px) {
+	.billboard-full-width .attachment-billboard-page {
+		height: auto;
+	}
+}
+/* ==================================================================
+*
+*   RoyalSlider Billboard styles
+*
+* -----------------------------------------------------------------*/
+
 .billboard-full-width .rsBullets {
 	position:absolute;
 	bottom:5%;
@@ -33,4 +63,21 @@
 	height:240px;
 	padding:5px 10px;
 	margin:0 5px;
+}
+@media only screen and (max-width: 719px) {
+	.billboard-caption .container {
+		top:0;
+	}
+	.billboard-caption-content {
+		width:48%;
+		margin: 0;
+		padding:1%;
+		height:auto;
+	}
+	.billboard-caption .rcc-blue,
+	.billboard-caption .green,
+	.billboard-caption .pink {
+		background:none;
+	}
+
 }

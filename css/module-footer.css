@@ -1,0 +1,215 @@
+.container-footer {
+  background:#fff;
+}
+.cube-contact {
+	height:300px;
+}
+.contact-info {
+	width:50%;
+}
+.cube-social {
+	height:140px;
+	background-color:#0073cf;
+	background-image: url('/wp-content/themes/AwakenBenehimeV11/img/socialicons.png');
+	border-bottom: none;
+}
+.cube17 {
+	padding: 10px 5px 0;
+	line-height: 1.5em;
+}
+.cube-contact .name,
+.cube-contact .phone,
+.cube-contact .address {
+	margin:0;
+}
+.cube-contact .name {
+	font-weight: 700;
+}
+.social-cube:hover {
+	background-color:#0073cf;
+}
+.cube13{
+	background-color: #3b5998;
+	background-position: 0 -150px;
+}
+.cube13:hover {
+	background-position:0 0;
+}
+.cube14:hover {
+	background-position: -150px 0;
+}
+.cube14 {
+	background-color: #33ccff;
+	background-position:-150px -150px;
+}
+.cube15:hover  {
+	background-position: -300px 0;
+}
+.cube15{
+	background-color: #c1302a;
+	background-position: -300px -150px;
+}
+.cube16:hover {
+	background-position: -450px 0;
+}
+.cube16 {
+	background-color: #ed812f;
+	background-position: -450px -150px;
+}
+.cube17:hover {
+	background-position: -600px 0;
+}
+.cube17 {
+	background-color:#333;
+	color:#000c15;
+	background-position: -600px -150px;
+}
+.cube18:hover {
+	background-position: -750px 0;
+}
+.cube18 {
+	background-color: #29bb4e;
+	background-position: -750px -150px;
+}
+.cube-sitemap {
+	height:300px;
+}
+.cube-sitemap a:hover{
+	border-bottom:none;
+}
+.nav-sitemap {
+	padding:0;
+	margin-bottom:10px;
+	width:20%;
+	position: relative;
+	float: left;
+}
+.nav-sitemap > li {
+	list-style: none;
+	margin-bottom: 2px;
+
+}
+
+.nav-sitemap .nav-sitemap-a:hover {
+	color: #fff;
+	border-bottom: 1px solid #fff;
+}
+
+.footer ul {
+  margin:0;
+  padding:0;
+	display: block;
+	height:25px;
+
+}
+.footer li {
+  position: relative;
+  float: left;
+  margin: 0 14px 0 0;
+  list-style:none;
+  text-align:center;
+}
+.footer,
+.footer a {
+  color:#fff;
+}
+.footer a {
+	border-bottom-color:#fff;
+}
+.footer a:hover {
+	border-bottom:1px solid #fff;
+}
+
+/* ==================================================================
+*
+*   Responsive Styles
+*
+* -----------------------------------------------------------------*/
+@media only screen and (min-width: 823px) and (max-width: 980px) {
+	.cube13:hover {
+    background-position: -40px 0;
+  }
+  .cube13 {
+    background-position: -40px -150px;
+  }
+  .cube14:hover {
+    background-position: -190px 0;
+  }
+  .cube14 {
+    background-position: -190px -150px;
+  }
+  .cube15:hover {
+    background-position: -340px 0;
+  }
+  .cube15 {
+    background-position: -340px -150px;
+  }
+  .cube16:hover {
+    background-position: -490px 0;
+  }
+  .cube16 {
+    background-position: -490px -150px;
+  }
+  .cube17:hover {
+    background-position: -640px 0;
+  }
+  .cube17 {
+    background-position: -640px -150px;
+  }
+  .cube18:hover {
+    background-position: -790px 0;
+  }
+  .cube18 {
+    background-position: -790px -150px;
+  }
+}
+@media only screen and (max-width: 822px) {
+	.container-footer .cube-social {
+		width:95px;
+	}
+  .cube13 {
+    background-position: -40px -150px;
+  }
+  .cube13:hover {
+    background-position: -40px 0;
+  }
+  .cube14:hover {
+    background-position: -190px 0;
+  }
+  .cube14 {
+    background-position: -190px -150px;
+  }
+  .cube15:hover {
+    background-position: -340px 0;
+  }
+  .cube15 {
+    background-position: -340px -150px;
+  }
+  .cube16:hover {
+    background-position: -490px 0;
+  }
+  .cube16 {
+    background-position: -490px -150px;
+  }
+  .cube17:hover  {
+    background-position: -640px 0;
+  }
+  .cube17{
+    background-position: -640px -150px;
+  }
+  .cube18:hover  {
+    background-position: -790px 0;
+  }
+  .cube18{
+    background-position: -790px -150px;
+  }
+	.cube-sitemap,
+	.footer,
+	.footer ul {
+		height: auto;
+	}
+	.footer {
+		bottom:auto;
+		margin-top: auto;
+	}
+}

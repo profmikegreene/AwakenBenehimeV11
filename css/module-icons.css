@@ -1,5 +1,53 @@
-.icon-dropdown-arrow {
+.icon.button {
+	padding:0;
+}
+.icon-r-dropdown-arrow,
+.icon-l-dropdown-arrow {
 	font-size: .75em;
+	cursor: pointer;
+	position: relative;
+}
+.icon-r-dropdown-arrow:after {
+	width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&rarr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin:30% 0 0 45%;
+  border-top: .4em solid transparent;
+  border-bottom: .4em solid transparent;
+  border-left: .4em solid #fff;
+}
+.icon-l-dropdown-arrow:after {
+	width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&larr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin:30% 0 0 40%;
+  border-top: .4em solid transparent;
+  border-bottom: .4em solid transparent;
+  border-right: .4em solid #fff;
+}
+.is-active.icon-r-dropdown-arrow:after,
+.is-active.icon-l-dropdown-arrow:after {
+	width: 0;
+  height: 0;
+  display: inline-block;
+  content: "&darr;";
+  text-indent: -99999px;
+  vertical-align: top;
+  margin: 37.5% 0 0 33%;
+  border-left: .4em solid transparent;
+  border-right: .4em solid transparent;
+  border-top: .4em solid #fff;
+}
+.button-small.icon-l-dropdown-arrow,
+.button-small.icon-r-dropdown-arrow {
+	line-height: 22px;
+	height:21px;
 }
 .icon-search {
 	background: url('/wp-content/themes/AwakenBenehimeV11/img/search-icon.png') no-repeat;

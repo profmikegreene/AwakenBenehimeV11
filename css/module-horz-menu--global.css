@@ -1,12 +1,12 @@
-body {
-	margin-top: 40px;
+.horz-menu--global-pad {
+	height:40px;
+	width:100%;
 }
 .horz-menu--global {
 	position: fixed;
 	top: 0;
 	width: 100%;
 	z-index: 9999;
-	x-background:#0073cf;
 }
 .logged-in .horz-menu--global {
 	top:28px;
@@ -18,9 +18,7 @@ body {
 .horz-menu-toggle--global {
 	width:100%;
 }
-.horz-menu-toggle--global:hover {
-	x-background:#575757;
-}
+
 .horz-menu--global a,
 .horz-menu--global button,
 .horz-menu--global label {
@@ -70,9 +68,9 @@ body {
 .myrcc-login-form input {
 	width:180px;
 }
-.horz-menu-list-item--why-rcc ul,
-.horz-menu-list-item--why-rcc > a:hover,
-.horz-menu-list-item--why-rcc.is-hover{
+.horz-menu-list-item--whyrcc ul,
+.horz-menu-list-item--whyrcc > a:hover,
+.horz-menu-list-item--whyrcc.is-hover{
 	background: #a612d1;
 }
 .horz-menu-list-item--programs ul,
@@ -80,9 +78,9 @@ body {
 .horz-menu-list-item--programs.is-hover {
 	background: #cf5c00;
 }
-.horz-menu-list-item--get-started ul,
-.horz-menu-list-item--get-started > a:hover,
-.horz-menu-list-item--get-started.is-hover {
+.horz-menu-list-item--getstarted ul,
+.horz-menu-list-item--getstarted > a:hover,
+.horz-menu-list-item--getstarted.is-hover {
 	background: #5fa4db;
 }
 .horz-menu-list-item--services ul,
@@ -95,8 +93,12 @@ body {
 .horz-menu-list-item--explore.is-hover {
 	background: #73cf00;
 }
+.horz-menu-list-item--services.is-hover .horz-menu-dropdown,
+.horz-menu-list-item--getstarted.is-hover .horz-menu-dropdown {
+	left:-120px;
+}
 .horz-menu-list-item--explore.is-hover .horz-menu-dropdown {
-	left:-300px;
+	left:-420px;
 }
 .horz-menu-list-item--explore .map {
 	padding:0;
@@ -147,6 +149,9 @@ body {
 @media screen and (max-width: 822px) {
 	body {
 		margin-top: 0;
+	}
+	.horz-menu--global-pad {
+		height: 0;
 	}
 	.horz-menu--global {
 		position:relative;

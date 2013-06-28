@@ -40,7 +40,7 @@
     position: absolute;
     left: -9999px;
 }
-/*.is-hover > .horz-menu-sublist,*/
+
 .is-hover > .horz-menu-dropdown {
     left: 0;
 }

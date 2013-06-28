@@ -41,9 +41,13 @@
 @import "module-billboard.css";
 @import "module-billboard--homepage.css";
 @import "module-cube.css";
-@import "module-nav-footer.css";
-
+@import "module-footer.css";
+@import "module-sidebar.css";
+@import "module-comments.css";
 
 
 /** Templates **/
+@import "template-page-content.css";
+@import "template-comments.css";
 @import "template-front-page.css";
+@import "template-online-schedule.css";

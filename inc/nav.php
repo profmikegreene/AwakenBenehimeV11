@@ -1,3 +1,12 @@
+<?php
+  global $blog_id;
+  if ( $blog_id == 1 ) {
+    //Do nothing
+  } else {
+    switch_to_blog( 1 );
+  }
+?>
+<div class="horz-menu--global-pad" id="horz-menu--global-pad"></div>
 <div class="horz-menu horz-menu--global rcc-blue" id="horz-menu--global">
 	<a class="horz-menu-toggle horz-menu-toggle--global" href="#">Menu</a>
 	<ul class="horz-menu-list horz-menu-list--global">
@@ -18,146 +27,18 @@
 	            </form>
 	          </li>
 	          <li><a href="/helpdesk/">Need help with myRCC?</a></li>
+            <li><a href="/employees/">Employee Login</a></li>
 
         </ul>
       </div>
       </li>
-			<li class="horz-menu-list-item horz-menu-list-item--why-rcc ">
-				<a href="#">Why RCC?</a>
-				<div class="horz-menu-dropdown">
-					<?php wp_nav_menu( array(
-						'theme_location' => 'global-menu-why-rcc',
-						'container'	=>	false,
-						'menu_class'	=>	'horz-menu-sublist'
-						)); ?>
-						<?php if ( is_active_sidebar( 'global-widget-why-rcc' ) ) : ?>
-							<ul id="secondary" class="widget-area horz-menu-sublist" role="complementary">
-								<?php dynamic_sidebar( 'global-widget-why-rcc' ); ?>
-							</ul><!-- #secondary -->
-						<?php endif; ?>
-					</div>
-				<!-- <ul class="horz-menu-sublist">
-					<li><a href="#">Quality education</a></li>
-					<li><a href="#">Build your foundation</a></li>
-					<li><a href="#">Transfer</a></li>
-					<li><a href="#">The cost of college</a></li>
-					<li><a href="#">Many types of financial aid</a></li>
-					<li><a href="#">Vibrant student life</a></li>
-					<li><a href="#">Cutting edge technology</a></li>
-				</ul> -->
-			</li>
-			<li class="horz-menu-list-item horz-menu-list-item--programs">
-				<a href="#">Programs & Courses</a>
-				<div class="horz-menu-dropdown">
-				<?php wp_nav_menu( array(
-					'theme_location' => 'global-menu-programs',
-					'container'	=>	false,
-					'menu_class'	=>	'horz-menu-sublist'
-					)); ?>
-					<?php if ( is_active_sidebar( 'global-widget-programs' ) ) : ?>
-							<ul id="secondary" class="widget-area horz-menu-sublist" role="complementary">
-								<?php dynamic_sidebar( 'global-widget-programs' ); ?>
-							</ul><!-- #secondary -->
-						<?php endif; ?>
-				</div>
-				<!-- <ul class="horz-menu-sublist ">
-					<li><a href="#">Course Schedule</a></li>
-					<li><a href="#">Programs of Study</a></li>
-					<li><a href="#">Distance Learning</a></li>
-					<li><a href="#">Dual Enrollment</a></li>
-					<li><a href="#">Academic Calendar</a></li>
-					<li><a href="#">General Education Goals</a></li>
-				</ul> -->
-			</li>
-			<li class="horz-menu-list-item horz-menu-list-item--get-started">
-				<a href="#">Get Started</a>
-				<div class="horz-menu-dropdown">
-				<?php wp_nav_menu( array(
-					'theme_location' => 'global-menu-get-started',
-					'container'	=>	false,
-					'menu_class'	=>	'horz-menu-sublist'
-				 )); ?>
-				 <?php if ( is_active_sidebar( 'global-widget-get-started' ) ) : ?>
-							<ul id="secondary" class="widget-area horz-menu-sublist" role="complementary">
-								<?php dynamic_sidebar( 'global-widget-get-started' ); ?>
-							</ul><!-- #secondary -->
-						<?php endif; ?>
-				</div>
-				<!-- <ul class="horz-menu-sublist ">
-					<li><a href="#">Apply to RCC</a></li>
-					<li><a href="#">Placement Testing</a></li>
-					<li><a href="#">Register for courses</a></li>
-					<li><a href="#">Pay for courses</a></li>
-					<li><a href="#">President's Welcome</a></li>
-					<li><a href="#">Contact Us</a></li>
-					<li><a href="#">Directions</a></li>
-					<li><a href="#">FAQ's</a></li>
-					<li><a href="#">Tuition & Fees</a></li>
-					<li><a href="#">Veteran's Affairs</a></li>
-				</ul> -->
-			</li>
-			<li class="horz-menu-list-item horz-menu-list-item--services">
-				<a href="#">Student Services</a>
-				<div class="horz-menu-dropdown">
-				<?php wp_nav_menu( array(
-					'theme_location' => 'global-menu-services',
-					'container'	=>	false,
-					'menu_class'	=>	'horz-menu-sublist'
-					)); ?>
-					<?php if ( is_active_sidebar( 'global-widget-services' ) ) : ?>
-							<ul id="secondary" class="widget-area horz-menu-sublist" role="complementary">
-								<?php dynamic_sidebar( 'global-widget-services' ); ?>
-							</ul><!-- #secondary -->
-						<?php endif; ?>
-				</div>
-				<!-- <ul class="horz-menu-sublist ">
-					<li><a href="#">Academic Advising</a></li>
-					<li><a href="#">Campus Safety</a></li>
-					<li><a href="#">Campus Maps</a></li>
-					<li><a href="#">Student Handbook</a></li>
-					<li><a href="#">Student Activities</a></li>
-					<li><a href="#">Student Consumer Information</a></li>
-					<li><a href="#">Bookstore</a></li>
-					<li><a href="#">First Year Experience (FYE)</a></li>
-					<li><a href="#">Testing Center</a></li>
-					<li><a href="#">Virginia Wizard</a></li>
-					<li><a href="#">Learning Resources</a></li>
-					<li><a href="#">Student Support Services (SSS)</a></li>
-					<li><a href="#">Library</a></li>
-					<li><a href="#">Transcripts</a></li>
-				</ul> -->
-			</li>
-			<li class="horz-menu-list-item horz-menu-list-item--explore">
-					<a href="#">Explore RCC</a>
-					<div class="horz-menu-dropdown">
-						<?php if ( is_active_sidebar( 'global-widget-explore' ) ) : ?>
-							<ul id="secondary" class="widget-area horz-menu-sublist" role="complementary">
-								<?php dynamic_sidebar( 'global-widget-explore' ); ?>
-							</ul><!-- #secondary -->
-						<?php endif; ?>
-					<?php wp_nav_menu( array(
-					'theme_location' => 'global-menu-explore',
-					'container'	=>	false,
-					'menu_class'	=>	'horz-menu-sublist'
-					)); ?>
-				</div>
-				<!-- <ul class="horz-menu-sublist ">
-					<li><a href="#">College History</a></li>
-					<li><a href="#">Mission & Values</a></li>
-					<li><a href="#">College Expenses</a></li>
-					<li><a href="#">Organization Charts</a></li>
-					<li><a href="#">College Statistics</a></li>
-					<li><a href="#">Employee Directory</a></li>
-					<li><a href="#">Locations</a></li>
-					<li><a href="#">Rappenings</a></li>
-					<li><a href="#">VCCS</a></li>
-					<li><a href="#">Strategy & Effectiveness</a></li>
-					<li><a href="#">Support RCC</a></li>
-					<li><a href="#">Employee Login</a></li>
-					<li><a href="#">Site Map</a></li>
-				</ul> -->
-			</li>
-    <li id="site-search" class="horz-menu-list-item horz-menu-list-item--site-search">
+      <?php ab11_global_nav_menu( 'whyrcc', 'Why RCC?' ); ?>
+      <?php ab11_global_nav_menu( 'programs', 'Programs & Courses' ); ?>
+      <?php ab11_global_nav_menu( 'getstarted', 'Get Started' ); ?>
+      <?php ab11_global_nav_menu( 'services', 'Student Services' ); ?>
+			<?php ab11_global_nav_menu( 'explore', 'Explore RCC' ); ?>
+
+    	<li id="site-search" class="horz-menu-list-item horz-menu-list-item--site-search">
 <script>
 var myCallback = function() {
   if (document.readyState == 'complete') {
@@ -228,3 +109,4 @@ window.__gcse = {
     </li>
 	</ul>
 </div>
+<?php restore_current_blog(); ?>

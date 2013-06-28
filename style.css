@@ -8,4 +8,15 @@ Version: 11.0.0
 
 This file is a placeholder for Wordpress. CSS is found in the /css folder and is concatenated by the
 HTML5 Boilerplate build script
+
+
+Plugins required by theme
+Wordpress SEO by YOAST
+akismet
+RoyalSlider
+Tinymce Advanced
+
+ab11-custom-post-type--homepage.php
+ab11-custom-widget.php
+
 */
