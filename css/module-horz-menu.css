@@ -25,6 +25,9 @@
 		padding: 0;
 		min-width: 15em;
 }
+.horz-menu-sublist .no-hover {
+  background:none;
+}
 .horz-menu-list li {
 	position: relative;
 }

@@ -66,10 +66,18 @@
 
 /* ==================================================================
 *
-*   Article Content Styles
+*   Standard Content Styles
 *
 * -----------------------------------------------------------------*/
-
+.blogname {
+  font-family: "Source Sans Pro", "Segoe UI Light", "Segoe UI", "helvetica neue", Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  color:#fff;
+  border-top: 1px solid #fff;
+  width:220px;
+  margin: 6px 0;
+  padding-top: 6px;
+}
 .template-page {
   background: #f9f9f9; /* Old browsers */
   background: -moz-linear-gradient(left,  #ffffff 50%, #f9f9f9 50%); /* FF3.6+ */
@@ -89,11 +97,10 @@
   top:-68px;
   margin-bottom:-68px;
 }
-.template-page .logo {
-  text-indent: -999em;
+.page .logo {
   z-index: 9;
 }
-.template-page .logo {
+.page .logo {
   position: absolute;
   top: -140px;
 }

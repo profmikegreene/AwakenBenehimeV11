@@ -23,7 +23,10 @@ get_header(); ?>
 <?php } ?>
 	<div id="primary" class="site-content container clearfix" role="main">
 		<div id="content" class="grid-8 content" role="main">
-				<img id="logo" class="logo" src="<?php bloginfo('template_directory'); ?>/img/rccLogo-white.png" alt="Rappahannock Community College Logo" />
+			<div class="logo">
+				<img id="logo" src="<?php bloginfo('template_directory'); ?>/img/rccLogo-white.png" alt="Rappahannock Community College Logo" />
+				<h2 class="blogname bigger"><?php bloginfo( 'name' ); ?></h2>
+			</div>
 			<?php if ( function_exists('yoast_breadcrumb') ) {
 				yoast_breadcrumb('<p id="breadcrumbs" class="breadcrumbs">','</p>');
 				} ?>

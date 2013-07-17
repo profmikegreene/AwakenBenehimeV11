@@ -67,6 +67,20 @@
 	float: right;
 	display: inline-block;
 }
+.vert-menu--sidebar .icon-r-dropdown-arrow:after {
+	border-color:transparent;
+	border-left-color: #fff;
+}
+.vert-menu--sidebar .icon-l-dropdown-arrow:after {
+	border-color:transparent;
+	border-right-color: #fff;
+}
+.vert-menu--sidebar .icon-d-dropdown-arrow:after,
+.vert-menu--sidebar .is-active.icon-r-dropdown-arrow:after,
+.vert-menu--sidebar .is-active.icon-l-dropdown-arrow:after {
+	border-color:transparent;
+	border-top-color: #fff;
+}
 
 /* ==================================================================
 *

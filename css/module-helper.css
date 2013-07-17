@@ -25,7 +25,8 @@
  * Hide from both screenreaders and browsers: h5bp.com/u
  */
 
-.hidden {
+.hidden,
+.is-hidden {
     display: none !important;
     visibility: hidden;
 }

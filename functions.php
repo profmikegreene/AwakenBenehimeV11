@@ -332,9 +332,14 @@ function ab11_body_class( $classes ) {
 	if ( ! is_active_sidebar( 'sidebar-1' ) || is_page_template( 'page-templates/full-width.php' ) )
 		$classes[] = 'full-width';
 
-	if ( is_page_template( 'template-front-page.php' ) )
+	if ( is_page_template( 'template-front-page.php' ) ) {
 		$classes[] = 'template-front-page';
+		$blacklist[] = 'page';
+		$classes = array_diff( $classes, $blacklist );
+	}
 
+	if ( is_page_template( 'template-online-schedule.php' ) )
+		$classes[] = 'template-online-schedule';
 
 	if ( empty( $background_color ) )
 		$classes[] = 'custom-background-empty';
@@ -363,17 +368,25 @@ add_filter( 'body_class', 'ab11_body_class' );
  *
  * @return HTML script tags.
  */
-function ab11_enqueue_styles() {
+function ab11_enqueue_scripts() {
 		if ( !is_admin() ) {
-			wp_deregister_script('jquery');
-			wp_register_script(
-				'jquery',
-				"http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js",
-				false,
-				'1.7.1',
-				true
-			);
-			wp_enqueue_script('jquery');
+			$url = 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'; // the URL to check against
+			$test_url = @fopen($url,'r'); // test parameters
+			if($test_url !== false) { // test if the URL exists
+			    function load_external_jQuery() { // load external file
+			        wp_deregister_script( 'jquery' ); // deregisters the default WordPress jQuery
+			        wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'); // register the external file
+			        wp_enqueue_script('jquery'); // enqueue the external file
+			    }
+				add_action('wp_enqueue_scripts', 'load_external_jQuery'); // initiate the function
+			} else {
+			    function load_local_jQuery() {
+			        wp_deregister_script('jquery'); // deregisters the default WordPress jQuery
+			        wp_register_script('jquery', get_bloginfo('template_url').'/js/vendor/jquery-1.8.3.min.js', __FILE__, false, '1.6.2', true); // register the local file
+			        wp_enqueue_script('jquery'); // enqueue the local file
+			    }
+			add_action('wp_enqueue_scripts', 'load_local_jQuery'); // initiate the function
+			}
 
 			wp_enqueue_script(
 				'royal_slider_adaptive_images',
@@ -390,9 +403,11 @@ function ab11_enqueue_styles() {
 				'1.5',
 				true
 			);
+
 		}
 }
-add_action ('init', 'ab11_enqueue_styles');
+
+
 
 /**
  * Extends the default WordPress get_blogs_of_user into
@@ -448,7 +463,6 @@ add_action('init', 'ab11_list_blogs');
  */
 function ab11_get_blogs_of_user( $user_id, $all = false ) {
 	global $wpdb;
-
 	$user_id = (int) $user_id;
 
 	// Logged out users can't have blogs
@@ -476,12 +490,12 @@ function ab11_get_blogs_of_user( $user_id, $all = false ) {
 			continue;
 		if ( $wpdb->base_prefix && 0 !== strpos( $key, $wpdb->base_prefix ) )
 			continue;
-		$blog_id = str_replace( array( $wpdb->base_prefix, '_capabilities' ), '', $key );
-		if ( ! is_numeric( $blog_id ) )
+		$b_id = str_replace( array( $wpdb->base_prefix, '_capabilities' ), '', $key );
+		if ( ! is_numeric( $b_id ) )
 			continue;
 
-		$blog_id = (int) $blog_id;
-		$blog = get_blog_details( $blog_id );
+		$b_id = (int) $b_id;
+		$blog = get_blog_details( $b_id );
 		if ( $blog && isset( $blog->domain ) && ( $all || ( ! $blog->archived && ! $blog->spam && ! $blog->deleted ) ) ) {
 			$blogs[ $blog->blogname ] = $blog->siteurl;
 		}
@@ -626,6 +640,13 @@ include 'inc/class-royal-slider.php';
  */
 include 'inc/class-nav-menus.php';
 
+/**
+ * Online Schedule Scripts
+ *
+ * @since Awaken Benehime V11
+ */
+
+include 'inc/online-schedule.php';
 
 
 ?>

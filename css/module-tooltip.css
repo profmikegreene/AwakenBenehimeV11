@@ -1,0 +1,19 @@
+.tooltip {
+	position: absolute;
+	z-index: 999;
+}
+.horz-menu-sublist--subjects .tooltip {
+	left: 80%;
+	/*text-align: right;*/
+	width: 320px;
+}
+.horz-menu-sublist--subjects .tooltip span {
+	background: #FFC;
+padding: 3px;
+border: 1px solid #CCC;
+}
+@media only screen and (max-width: 822px) {
+	.horz-menu-sublist--subjects .tooltip {
+		left:100%;
+	}
+}

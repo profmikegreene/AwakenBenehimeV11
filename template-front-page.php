@@ -98,11 +98,11 @@ get_header(); ?>
 					);
 					$image_url = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'rappening');
 					if (has_post_thumbnail()) {
-					echo '<a href="' . get_permalink() . '" class="cube grid-3 rappening" title="Posted '. get_the_time("j F Y | g:i a"). '">'.
+					echo '<a href="' . get_permalink() . '" class="cube rcc-blue grid-3 rappening" title="Posted '. get_the_time("j F Y | g:i a"). '">'.
 							 '<img src="'.$image_url[0].'" alt="'.get_the_title().'" />'.get_the_title().'</a>';
 					}
 					else {
-						echo '<a href="' . get_permalink() . '" class="cube grid-3 rappening" title="Posted '. get_the_time("j F Y | g:i a"). '">'.
+						echo '<a href="' . get_permalink() . '" class="cube grid-3 rcc-blue rappening" title="Posted '. get_the_time("j F Y | g:i a"). '">'.
 							 '<img src="/wp-content/themes/css/images/default_thumb.png" alt="' . $posts[$i]->post_title . '" />'.
 							 get_the_title().'</a>';
 					}

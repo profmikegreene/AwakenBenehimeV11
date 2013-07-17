@@ -7,11 +7,17 @@ padding-bottom: 1000px;
 	width:300px;
 }
 .horz-menu--global .horz-menu-dropdown {
-	width:540px;
+	/*width:540px;*/
 	overflow: hidden;
 }
+.horz-menu--global .horz-menu-dropdown.has-widget {
+ width:540px;
+ }
 .horz-menu--global .horz-menu-dropdown--wide {
-	width:780px;
+	width:480px;
+}
+.horz-menu--global .horz-menu-dropdown--wide.has-widget {
+	width: 780px;
 }
 .horz-menu--global .widget {
 	padding:10px;

@@ -10,7 +10,7 @@
 
 body:hover,
 #content:hover {
-    background: url(../img/grid-bkg.png) center 37px repeat-y;
+    /*background: url(../img/grid-bkg.png) center 37px repeat-y;*/
 }
 * {
     /*opacity: .95;*/
@@ -30,7 +30,6 @@ textarea {
 }
 
 body {
-    /*background: url('/wp-content/themes/AwakenBenehimeV10/images/gradientBkg2.jpg') 0 -20px fixed repeat-x; height:100%;*/
     font: 400 1em/1.5 "Source Sans Pro", "Segoe UI Light", "Segoe UI", "helvetica neue", Helvetica, Arial, sans-serif;
 }
 a {

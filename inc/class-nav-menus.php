@@ -90,16 +90,19 @@ function ab11_global_nav_menu( $menu_slug, $menu_heading ){
 		$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
 		$menu_items = wp_get_nav_menu_items($menu->term_id);
 		$count = count($menu_items);
+		$classes = '';
+		$output = false;
+		$output = '<li class="items-' . $count . ' horz-menu-list-item horz-menu-list-item--'.$menu_slug.'">'."\n\t";
+		$output .= '<a href="#">'.$menu_heading.'</a>'."\n\t";
+		// $output .= $count;
 
-		echo '<li class="horz-menu-list-item horz-menu-list-item--'.$menu_slug.'">'."\n\t";
-		echo '<a href="#">'.$menu_heading.'</a>'."\n\t";
-
-
-		$class_wide = ($count >= 7) ? 'horz-menu-dropdown--wide' : NULL;
-		echo '<div class="horz-menu-dropdown '.$class_wide.'">'."\n\t\t";
+		$classes .= ($count > 8) ? 'horz-menu-dropdown--wide ' : NULL;
 
 		if ( strcmp( $menu_slug, 'explore' ) ==0 ) {
-			ab11_nav_menu_widget('explore');
+			$widget = ab11_nav_menu_widget('explore');
+			if ( $widget ) {
+				$classes .= 'has-widget ';
+			}
 		}
 
 	$menu_list = '<ul id="menu-' . $menu_name . '" class="horz-menu-sublist">'."\n\t\t\t";
@@ -129,16 +132,24 @@ function ab11_global_nav_menu( $menu_slug, $menu_heading ){
 	} else {
 		$menu_list = '<ul><li>Menu "' . $menu_name . '" not defined.</li></ul>'."\n\t\t";
 	}
-	// $menu_list now ready to output
-	echo $menu_list;
+	
 
 	if ( strcmp( $menu_slug, 'explore' ) != 0 ) {
-			ab11_nav_menu_widget( $menu_slug );
+			$widget = ab11_nav_menu_widget( $menu_slug );
+			if ( $widget ) {
+				$classes .= 'has-widget ';
+			}
 		}
-	echo '</div>'."\n\t\t"; //end .horz-menu-dorpdown
-	echo '</li>'."\n"; //end .horz-menu-list-item
 
+	// $menu_list now ready to output
+	$output .= '<div class="horz-menu-dropdown '.$classes.'">'."\n\t\t";
+	$output .= ( strcmp( $menu_slug, 'explore' ) ==0 ) ? $widget : NULL;
+	$output .= $menu_list;
+	$output .= ( strcmp( $menu_slug, 'explore' ) !=0 ) ? $widget : NULL;
+	$output .= '</div>'."\n\t\t"; //end .horz-menu-dorpdown
+	$output .= '</li>'."\n"; //end .horz-menu-list-item
 
+	return $output;
 	}
 
 /**
@@ -154,6 +165,7 @@ function ab11_global_nav_menu( $menu_slug, $menu_heading ){
  */
 function ab11_nav_menu_widget ( $menu_slug ) {
 	global $wpdb;
+	$output = false;
 	$table = $wpdb->base_prefix.'options';
 	$option = 'sidebars_widgets';
 	$sql = "SELECT option_value FROM $table WHERE option_name = %s LIMIT 1";
@@ -171,16 +183,16 @@ function ab11_nav_menu_widget ( $menu_slug ) {
 						$value = maybe_unserialize( $row->option_value );
 						$widget = $value[$global_widget[1]];
 						// var_dump($widget);
-						echo '<ul id="secondary" class="widget-area horz-menu-sublist" role="complementary">'."\n\t\t";
-						echo '<aside id="text-3" class="widget $option">'."\n\t\t";
-						echo '<h3 class="widget-title">'.$widget['title'].'</h3>'."\n\t\t";
-						echo '<div class="textwidget">'.$widget['text'].'</div>'."\n\t\t";
-						echo '</aside>';
-						echo'</ul><!-- #secondary -->'."\n\t\t";
+						$output = '<ul id="secondary" class="widget-area horz-menu-sublist" role="complementary">'."\n\t\t";
+						$output .= '<aside id="text-3" class="widget $option">'."\n\t\t";
+						$output .= '<h3 class="widget-title">'.$widget['title'].'</h3>'."\n\t\t";
+						$output .= '<div class="textwidget">'.$widget['text'].'</div>'."\n\t\t";
+						$output .= '</aside>';
+						$output .= '</ul><!-- #secondary -->'."\n\t\t";
 				}
 			}
 	}
-
+	return $output;
 }
 
 

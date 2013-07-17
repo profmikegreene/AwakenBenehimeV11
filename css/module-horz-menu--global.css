@@ -49,7 +49,8 @@
 .horz-menu-list--global a {
 	padding:0 5px;
 }
-.horz-menu-list--global > .horz-menu-list-item {
+.horz-menu-list--global > .horz-menu-list-item,
+.horz-menu-list-item--site-search {
 	line-height: 40px;
 }
 .horz-menu-list-item a:hover {
@@ -127,7 +128,7 @@
 }
 
 .horz-menu--global input.gsc-search-button {
-	background:  #575757 0 0 url('/wp-content/themes/AwakenBenehimeV11/img/search-icon.png') no-repeat;
+	background-image: url('/wp-content/themes/AwakenBenehimeV11/img/search-icon.png');
 	border:none;
 	top:10px;
 	left:138px;
@@ -135,12 +136,14 @@
 	min-width: 30px;
 	position: absolute;
 }
-.horz-menu--global .gsc-search-button.is-hover,
-.horz-menu--global .gsc-input-hover{
-	background-color:#fff;
-	background-position-x:-30px;
-}
 
+.horz-menu--global .is-hover .global-search-input,
+.is-active .global-search-input{
+	background-color:#fff;
+}
+.is-active .gsc-search-button {
+	background-position: -30px 0;
+}
 .ie9 .horz-menu input.gsc-search-button {
 	top: 0;
 }
@@ -159,7 +162,8 @@
 	.logged-in .horz-menu--global {
 		top:0;
 	}
-	.horz-menu-list--global > .horz-menu-list-item {
+	.horz-menu-list--global > .horz-menu-list-item,
+	.horz-menu-list-item--site-search {
 		line-height: auto;
 	}
 	.horz-menu-sublist--global-myrcc {

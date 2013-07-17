@@ -50,18 +50,10 @@
 }
 .template-front-page .rappening {
 	height:250px;
-	padding:0;
-	width:230px;
+	color:#fff;
+
 }
-.template-front-page .rappening img {
-	width:230px;
-}
-.template-front-page .cube.rappening {
-	color:#0073cf;
-}
-.template-front-page .cube.rappening:hover {
-	color:#575757;
-}
+
 
 
 
@@ -90,7 +82,9 @@
 	.template-front-page .cube9 {
 		min-height:168px;
 	}
-
+	.template-front-page .rappening {
+		width:22.999%;
+	}
 	.template-front-page .rappening-title {
 		width: 100%;
 		text-align: left;
@@ -109,9 +103,8 @@
 	.template-front-page {
 		font-size: .9em;
 	}
-	.template-front-page .rappening,
 	.template-front-page .rappening img {
-		width:170px;
+		width:100%;
 	}
 	.template-front-page	.horz-menu--global {
 		margin-bottom:-40px;
