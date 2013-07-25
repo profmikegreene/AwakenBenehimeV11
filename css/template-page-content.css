@@ -99,10 +99,12 @@
 }
 .page .logo {
   z-index: 9;
-}
-.page .logo {
   position: absolute;
   top: -140px;
+}
+.logo a {
+  text-decoration: none;
+  border:none;
 }
 .template-page .type-page {
   padding:20px;

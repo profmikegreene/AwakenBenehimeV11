@@ -189,12 +189,38 @@ code {
 .rcc-green:hover {
     background: #007f5f;
 }
+.rcc-green10,
+.rcc-green10.no-hover:hover {
+    background: #d6e8e4;
+}
+.rcc-green10:hover,
+.rcc-green30,
+.rcc-green30.no-hover:hover {
+    background: #a6ddcf;
+}
+.rcc-green30:hover,
+.rcc-green60 {
+    background:#5fccb1;
+}
 .green,
 .green.no-hover:hover {
     background:#73cf00;
 }
 .green:hover {
     background:#519100;
+}
+.green10,
+.green10.no-hover:hover {
+    background: #e1ebd6;
+}
+.green10:hover,
+.green30,
+.green30.no-hover:hover {
+    background: #c9e5a6;
+}
+.green30:hover,
+.green60 {
+    background: #a4db5f;
 }
 .orange,
 .orange.no-hover:hover {
@@ -203,12 +229,38 @@ code {
 .orange:hover {
     background: #914100;
 }
+.orange10,
+.orange10.no-hover:hover {
+    background: #ebdfd6;
+}
+.orange10:hover,
+.orange30,
+.orange30.no-hover:hover {
+    background:#e5c2a6;
+}
+.orange30:hover,
+.orange60 {
+    background: #db965f;
+}
 .purple,
 .purple.no-hover:hover {
     background:#a612d1;
 }
 .purple:hover {
     background: #750d93;
+}
+.purple10,
+.purple10.no-hover:hover {
+    background: #e7d8eb;
+}
+.purple10:hover,
+.purple30,
+.purple30.no-hover:hover {
+    background: #d8ace5;
+}
+.purple30:hover,
+.purple60 {
+    background: #c36add;
 }
 .pink,
 .pink.no-hover:hover {
@@ -217,12 +269,30 @@ code {
 .pink:hover {
     background:#910051;
 }
+.pink10,
+.pink10.no-hover:hover {
+    background: #ebd6e1;
+}
+.pink10:hover,
+.pink30,
+.pink30.no-hover:hover {
+    background: #e5a6c9;
+}
+.pink30:hover,
+.pink60 {
+    background: #db5fa4;
+}
 .white,
 .white.no-hover:hover,
 .white a {
     background:#fff;
     color:#0073cf;
 }
+.white-grey,
+.white-grey.no-hover:hover {
+    background: #f9f9f9;
+}
+.white-grey:hover,
 .light-grey,
 .light-grey.no-hover:hover {
     background:#ddd;

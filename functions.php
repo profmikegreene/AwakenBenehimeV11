@@ -369,44 +369,60 @@ add_filter( 'body_class', 'ab11_body_class' );
  * @return HTML script tags.
  */
 function ab11_enqueue_scripts() {
-		if ( !is_admin() ) {
-			$url = 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'; // the URL to check against
-			$test_url = @fopen($url,'r'); // test parameters
-			if($test_url !== false) { // test if the URL exists
-			    function load_external_jQuery() { // load external file
-			        wp_deregister_script( 'jquery' ); // deregisters the default WordPress jQuery
-			        wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'); // register the external file
-			        wp_enqueue_script('jquery'); // enqueue the external file
-			    }
-				add_action('wp_enqueue_scripts', 'load_external_jQuery'); // initiate the function
-			} else {
-			    function load_local_jQuery() {
-			        wp_deregister_script('jquery'); // deregisters the default WordPress jQuery
-			        wp_register_script('jquery', get_bloginfo('template_url').'/js/vendor/jquery-1.8.3.min.js', __FILE__, false, '1.6.2', true); // register the local file
-			        wp_enqueue_script('jquery'); // enqueue the local file
-			    }
-			add_action('wp_enqueue_scripts', 'load_local_jQuery'); // initiate the function
-			}
+	if ( !is_admin() ) {
+		$url = 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'; // the URL to check against
+		$test_url = @fopen($url,'r'); // test parameters
+		if($test_url !== false) { // test if the URL exists
+      wp_deregister_script( 'jquery' ); // deregisters the default WordPress jQuery
+      wp_register_script('jquery', 'http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'); // register the external file
+      wp_enqueue_script('jquery'); // enqueue the external file
+		} else {
+      wp_deregister_script('jquery'); // deregisters the default WordPress jQuery
+      wp_register_script('jquery', get_bloginfo('template_url').'/js/vendor/jquery-1.8.3.min.js', __FILE__, false, '1.8.3', true); // register the local file
+      wp_enqueue_script('jquery'); // enqueue the local file
+		}
 
+		if ( is_page_template( 'template-online-schedule.php' ) ) {
 			wp_enqueue_script(
-				'royal_slider_adaptive_images',
-				get_template_directory_uri() . '/js/royal-slider-adaptive-images.js',
+				'ab11_os_fe_scripts',
+				get_bloginfo('template_directory') . '/inc/ab11-os-fe/ab11-os-fe-scripts.js',
+				array( 'jquery' ),
+				'1.0',
+				true
+			);
+			wp_enqueue_script(
+				'jquery.history',
+				get_bloginfo('template_directory') . '/js/vendor/jquery.history.js',
 				array( 'jquery' ),
 				'1.0',
 				true
 			);
 
-			wp_enqueue_script(
-				'google_jsapi',
-				'https://www.google.com/jsapi?key=ABQIAAAA0DxWBmajUg3-7xSRVQ2q3RRo7kyImI0gdcpnJoA7tSJ7W8_oCBQNAUWA1k40IheM4_liCOjcgVEIwA',
-				false,
-				'1.5',
-				true
+			wp_localize_script(
+				'ab11_os_fe_scripts',
+				'ab11_os_ajax_request',
+				array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) )
 			);
-
 		}
-}
+		wp_enqueue_script(
+			'ab11_os_scripts',
+			get_template_directory_uri() . '/js/main.js',
+			array( 'jquery'),
+			'11.0',
+			true );
 
+
+		wp_enqueue_script(
+			'google_jsapi',
+			'https://www.google.com/jsapi?key=ABQIAAAA0DxWBmajUg3-7xSRVQ2q3RRo7kyImI0gdcpnJoA7tSJ7W8_oCBQNAUWA1k40IheM4_liCOjcgVEIwA',
+			false,
+			'1.5',
+			true
+		);
+
+	}
+}
+add_action( 'wp_enqueue_scripts', 'ab11_enqueue_scripts' );
 
 
 /**
@@ -626,12 +642,21 @@ function ab11_columns_remove_date($defaults) {
 }
 add_filter('manage_page_posts_columns', 'ab11_columns_remove_date');
 
+
+
 /**
  * Extends the default RoyalSlider plugin
  *
  * @since Awaken Benehime V11
  */
 include 'inc/class-royal-slider.php';
+
+/**
+ * Extends the default RoyalSlider plugin
+ *
+ * @since Awaken Benehime V11
+ */
+include 'inc/class-has-royal-slider.php';
 
 /**
  * Extends the default WordPress wp_nav_menu
@@ -646,7 +671,45 @@ include 'inc/class-nav-menus.php';
  * @since Awaken Benehime V11
  */
 
-include 'inc/online-schedule.php';
+require_once('inc/ab11-os-fe/class-ab11-os-fe.php' );
 
+add_action( 'wp_ajax_nonpriv_ab11_os_ajax',  'ajax_controller', 10, 0 );
+add_action( 'wp_ajax_ab11_os_ajax',  'ajax_controller', 10, 0 );
+
+function ajax_controller () {
+	if(!isset($_SESSION)) {
+    session_start();
+	}
+
+	if ( isset( $_SESSION['ab11_os_fe_schedule'] ) ) {
+		switch($_POST['function']) {
+			case 'get_semester':
+				if ( isset( $_SESSION['ab11_os_fe_schedule'] ) ) {
+					unset( $_SESSION['ab11_os_fe_schedule'] );
+				}
+			 	$_SESSION['ab11_os_fe_schedule'] = new AB11_OS_FE();
+				break;
+			case 'get_subjects':
+				echo $_SESSION['ab11_os_fe_schedule']->get_subjects();
+		 		break;
+			case 'get_calendar':
+				echo $_SESSION['ab11_os_fe_schedule']->get_calendar();
+		 		break;
+			case 'get_courses':
+				echo $_SESSION['ab11_os_fe_schedule']->get_courses();
+		 		break;
+			case 'test':
+				echo $_SESSION['ab11_os_fe_schedule']->test();
+		 		break;
+		}
+		die();
+	} else {
+		$_SESSION['ab11_os_fe_schedule'] = new AB11_OS_FE();
+	}
+}
+if( isset( $_REQUEST['action'] ) ) {
+  do_action( 'wp_ajax_' . $_REQUEST['action'] );
+  do_action( 'wp_ajax_nopriv_' . $_REQUEST['action'] );
+}
 
 ?>

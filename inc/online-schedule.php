@@ -1,21 +1,29 @@
 <?php
 
 
-function ab11_os_fe_scripts(){
-	if( is_page_template( 'template-online-schedule.php' ) ) {
-		wp_enqueue_script(
-			'ab11_os_fe_scripts',
-			get_template_directory_uri() . '/js/online-schedule.js',
-			array( 'jquery' ),
-			'1.0',
-			true
-		);
-		wp_localize_script( 'ab11_os_ajax_request', 'ab11_os_ajax_request', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 
-	}
-}
-add_action( 'wp_enqueue_scripts', 'ab11_os_fe_scripts' );
 
+
+// add_action( 'wp_ajax_nonpriv_ab11_os_init', 'ab11_os_init' , 10, 0 );
+// add_action( 'wp_ajax_ab11_os_init', 'ab11_os_init' , 10, 0 );
+
+// add_action( 'wp_ajax_nonpriv_ab11_os_show_semesters', 'ab11_os_show_semesters' , 10, 0 );
+// add_action( 'wp_ajax_ab11_os_show_semesters', 'ab11_os_show_semesters' , 10, 0 );
+
+// function ab11_os_init() {
+// 	$schedule = AB11_Online_Schedule::instance();
+// 	$schedule::setup();
+// 	die();
+// }
+
+// function ab11_os_show_semesters() {
+// 	echo $schedule::show_semesters();
+// 	die();
+// }
+// if( isset( $_REQUEST['action'] ) ) {
+//   do_action( 'wp_ajax_' . $_REQUEST['action'] );
+//   do_action( 'wp_ajax_nopriv_' . $_REQUEST['action'] );
+// }
 
 
 ?>

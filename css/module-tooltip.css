@@ -4,13 +4,14 @@
 }
 .horz-menu-sublist--subjects .tooltip {
 	left: 80%;
-	/*text-align: right;*/
-	width: 320px;
+	text-align: center;
 }
 .horz-menu-sublist--subjects .tooltip span {
 	background: #FFC;
-padding: 3px;
-border: 1px solid #CCC;
+  font-size: .8125em; /* 13x --> 13 ÷ 16  */
+  line-height: 1.8461em; /* 24px --> 24 ÷ 13  */
+	border: 1px solid #CCC;
+	display: block;
 }
 @media only screen and (max-width: 822px) {
 	.horz-menu-sublist--subjects .tooltip {

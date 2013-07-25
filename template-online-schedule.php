@@ -9,9 +9,16 @@
  * @subpackage Awaken_Benehime
  * @since Awaken Benehime V11
  */
-error_reporting(E_ALL);
-ini_set('display_errors', 'on');
+
+
+
+if(!isset($_SESSION)) {
+    session_start();
+}
+
+
 get_header(); ?>
+<code id="testing"></code>
 <?php	if ( has_post_thumbnail() ) { ?>
 				<div class="billboard blue30 no-hover billboard-full-width" id="billboard">
 				<?php the_post_thumbnail( 'billboard-page' ); ?>
@@ -24,8 +31,8 @@ get_header(); ?>
 <div id="primary" class="site-content" role="main">
 <div id="content" class="content container clearfix" role="main">
 	<div class="logo grid-12">
-		<img id="logo" src="<?php bloginfo('template_directory'); ?>/img/rccLogo-white.png"
-				 alt="Rappahannock Community College Logo" />
+		<a href="<?php echo network_site_url(); ?>"><img id="logo" src="<?php bloginfo('template_directory'); ?>/img/rccLogo-white.png"
+				 alt="Rappahannock Community College Logo" /></a>
 		<h2 class="blogname bigger"><?php bloginfo( 'name' ); ?></h2>
 	</div>
 	<div id="horz-menu--options-bar" class="horz-menu horz-menu--schedule-options-bar schedule-options-bar is-hover-disabled clearfix">
@@ -34,11 +41,7 @@ get_header(); ?>
 	  	<a href="#" class="horz-menu-selector ">Select Semester<span class="icon icon-d-dropdown-arrow"></span></a>
 		  <div id="hidden-semesters" class="horz-menu-dropdown">
 		  <ul id="horz-menu-sublist--semesters" class="horz-menu-sublist horz-menu-sublist--semesters">
-		  	<?php
-		  	// $schedule = new AB11_Online_Schedule();
-				// echo $schedule->get_semesters();
-		  	do_action( 'wp_ajax_nonpriv_ab11_os_get_semesters' );
-				?>
+		   <?php ab11_os_get_semesters(); ?>
 		  </ul>
 		  </div>
 	  </li>
@@ -107,12 +110,17 @@ get_header(); ?>
 		</li>
 	</ul>
 </div><!--end optionsBar -->
+
+<!--AJAX Uses this div to store states-->
+<div id="hidden-container-content" class="is-hidden"></div>
+
 <div id="container-content" class="container container-content clearfix">
+	<p id="breadcrumbs" class="is-hidden grid-12 breadcrumbs breadcrumbs-schedule"></p>
   <div id="seminstructions" class="instructions"><span></span><p>Please select a semester</p></div>
   <div id="subinstructions" class="instructions"><span></span><p>Please select a subject</p></div>
   <div id="optinstructions" class="instructions"><span></span><p>May help narrow your search</p></div>
 
-  <ul id="class-list" class="hidden">
+  <ul id="ab11-os-class-list" class="is-hidden ab11-os-class-list grid-12 small">
 	 <!--Enter Subject Data -->
 	</ul><!--end course list ul-->
   <div id="container-calendar" class="grid-12 container-calendar"></div>

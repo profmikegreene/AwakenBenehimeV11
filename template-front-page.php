@@ -15,7 +15,10 @@ get_header(); ?>
 <div id="primary" class="site-content">
 	<div id="content" role="main">
 		<div class="billboard blue30 no-hover billboard-full-width" id="billboard">
-			<?php echo get_new_royalslider(1); ?>
+			<?php while ( have_posts() ) : the_post(); ?>
+				<?php the_content(); ?>
+			<?php endwhile; // end of the loop. ?>
+			<?php //echo get_new_royalslider(1); ?>
 		</div><!-- .billboard -->
 	 	<div id="container-cubes" class="container container-cubes clearfix">
 			<?php

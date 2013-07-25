@@ -3,7 +3,7 @@
 	width: 100%;
 }
 .schedule-options-bar {
-	margin-bottom: 48px;
+	margin-bottom: 24px;
 	padding:0 5px;
 }
 .schedule-options-bar .horz-menu-list--options-bar {
@@ -109,7 +109,12 @@
 	border-top-left-radius: 3px;
 
 }
-
+.template-online-schedule .container-content {
+	background:#fff;
+}
+.breadcrumbs-schedule {
+	padding:0 0 24px;
+}
 .template-online-schedule .content {
 	top:180px;
 	margin-bottom: 180px;
@@ -123,7 +128,59 @@
 .template-online-schedule .cube p {
 	margin-bottom: 24px;
 }
-
+.ab11-os-class-list {
+	padding-left: 0;
+	display: none;
+	min-height: 400px;
+}
+.ab11-os-class-list .course {
+	display: block;
+	margin-bottom:1px;
+	cursor: pointer;
+}
+.ab11-os-class-list .metadata{
+	padding-left: 0;
+	margin-bottom: 0;
+}
+.ab11-os-class-list .course,
+.ab11-os-class-list .course li {
+	list-style: none;
+}
+.ab11-os-class-list .metadata li {
+	display: inline-block;
+	vertical-align: top;
+}
+.ab11-os-class-list .course-number {
+	width:5%;
+	min-width: 45px;
+	text-align: center;
+}
+.ab11-os-class-list .course-title {
+	width:30%;
+}
+.ab11-os-class-list .days {
+	width:10%;
+	min-width: 91px;
+}
+.ab11-os-class-list .day {
+	padding:0 2px;
+}
+.ab11-os-class-list .day-dimmed {
+	color:#e6e6e6;
+	opacity: .5;
+}
+.ab11-os-class-list .time {
+	width:15%;
+	min-width: 85px;
+}
+.ab11-os-class-list .length {
+	width:25%;
+	min-width: 80px;
+}
+.ab11-os-class-list .location {
+	width:10%;
+	min-width: 65px;
+}
 @media only screen and (max-width: 822px) {
 	.schedule-options-bar {
 		margin-bottom: 10px;
