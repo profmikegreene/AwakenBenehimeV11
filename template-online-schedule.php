@@ -29,7 +29,7 @@ get_header(); ?>
 <?php } ?>
 
 <div id="primary" class="site-content" role="main">
-<div id="content" class="content container clearfix" role="main">
+<div id="content" class="content container-content container clearfix" role="main">
 	<div class="logo grid-12">
 		<a href="<?php echo network_site_url(); ?>"><img id="logo" src="<?php bloginfo('template_directory'); ?>/img/rccLogo-white.png"
 				 alt="Rappahannock Community College Logo" /></a>
@@ -93,7 +93,7 @@ get_header(); ?>
 		            </div>
 		         </div>
 		         </fieldset>
-		        <input type="submit" id="optionSubmit" title="Save Options" value="Save Options" />
+		        <input type="submit" id="options-submit" title="Save Options" value="Save Options" />
 		      </form>
 		      </il>
 		    </ul>
@@ -111,20 +111,10 @@ get_header(); ?>
 	</ul>
 </div><!--end optionsBar -->
 
-<!--AJAX Uses this div to store states-->
-<div id="hidden-container-content" class="is-hidden"></div>
 
-<div id="container-content" class="container container-content clearfix">
-	<p id="breadcrumbs" class="is-hidden grid-12 breadcrumbs breadcrumbs-schedule"></p>
-  <div id="seminstructions" class="instructions"><span></span><p>Please select a semester</p></div>
-  <div id="subinstructions" class="instructions"><span></span><p>Please select a subject</p></div>
-  <div id="optinstructions" class="instructions"><span></span><p>May help narrow your search</p></div>
+<div id="container-ajax" class="container container-ajax clearfix">
 
-  <ul id="ab11-os-class-list" class="is-hidden ab11-os-class-list grid-12 small">
-	 <!--Enter Subject Data -->
-	</ul><!--end course list ul-->
-  <div id="container-calendar" class="grid-12 container-calendar"></div>
-  </div><!--end classContent -->
+</div><!--end container-content -->
 	<div id="container-cubes" class="container-cubes clearfix">
 		<?php
 		$args= array(
@@ -183,12 +173,15 @@ get_header(); ?>
 
 </div><!--end .content -->
 </div><!--end .container-->
-<div id="info" class="modal">
- 	 <div id="ajaxInfo"></div>
- 	 <i class="icon icon-loading"></i>
-	<a href="#" id="classInfoClose" class="close"/>X</a>
+<div id="modal-course-detail" class="modal modal-course-detail is-hidden">
+ 	 <div id="course-detail" class="course-detail modal-content">
+
+ 	 </div>
+ 	 <a href="#" class="modal-close"/>X</a>
  </div>
 <!-- Mask to cover the whole screen -->
-  <div id="mask" class="mask"></div>
+  <div id="mask" class="mask is-hidden">
+  	<i class="icon icon-loading"></i>
+</div>
 
 <?php get_footer(); ?>

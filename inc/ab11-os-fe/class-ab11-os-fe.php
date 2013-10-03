@@ -1,9 +1,4 @@
 <?php
-//Change for PRODUCTION
-//include_once($_SERVER['DOCUMENT_ROOT'].'/wp-load.php' );
-// include_once($_SERVER['DOCUMENT_ROOT'].'www.wp.dev/wp-load.php' );
-// include_once(get_bloginfo( 'template_directory' ).'/functions.php' );
-
 
 class AB11_OS_FE {
 	private	$wpdb,
@@ -18,7 +13,9 @@ class AB11_OS_FE {
 						$rendered_courses,
 						$semester_id,
 						$calendar,
-						$queries;
+						$breadcrumbs,
+						$queries,
+						$filters;
 
 	protected  $instance = NULL;
 
@@ -26,8 +23,8 @@ class AB11_OS_FE {
 
 	protected  $version = '1.1.0';
 
-	public function __construct() {
-		$args = $_POST;
+	public function __construct( $args ) {
+		// $args = $_POST;
 		$this->semester_id = isset( $args['semester_id'] ) ? $args['semester_id'] : NULL;
 		$this->career = isset( $args['career'] ) ? $args['career'] : NULL;
 
@@ -202,6 +199,16 @@ class AB11_OS_FE {
 			$this->courses = $this->set_courses();
 			$this->subjects = $this->set_subjects();
 			$this->calendar = $this->set_calendar();
+			$this->filters = [
+				'subject' => NULL,
+				'time' => NULL,
+				'day' => NULL,
+				'session' => NULL,
+				'location' => NULL
+			];
+			$this->filters = isset( $args['filters'] ) ? $this->set_filters() : $this->filters;
+
+			$this->render_breadcrumbs( 'semester' );
 		}
 	}
 
@@ -215,7 +222,9 @@ class AB11_OS_FE {
 		'COURSES' => count( $this->courses ),
 		'QUERIES' => $this->queries,
 		'CALENDAR' => isset( $this->calendar ) ? 'SET' : 'NULL',
-		'POST' => $args
+		'_POST' => $args,
+		'FILTERS' => $this->filters,
+		'BREADCRUMBS' => $this->breadcrumbs
 		];
 
 
@@ -223,9 +232,14 @@ class AB11_OS_FE {
 		die();
 	}
 
+	public function set_param( $args ){
 
+		foreach ($args as $key => $value) {
+			$this->$key = $value;
+		}
+	}
 
-	public function set_semester() {
+	private function set_semester() {
 		$args = $_POST;
 
 		$this->semester_id = isset( $args['semester_id'] ) ? $args['semester_id'] : NULL;
@@ -233,17 +247,17 @@ class AB11_OS_FE {
 
 	}
 
-	public function set_career() {
+	private function set_career() {
 		$args = $_POST;
 		$this->career	=	isset( $args['career'] ) ? $args['career'] : 'CRED';
 	}
 
-	public function set_options() {
+	private function set_options() {
 		$args = $_POST;
 
 	}
 
-	public function set_courses () {
+	private function set_courses () {
 		$query = "SELECT * FROM $this->ab11_os_semester_db WHERE career='$this->career'";
 		$this->queries['set_courses'] = $query;
 
@@ -251,7 +265,7 @@ class AB11_OS_FE {
 
 		return $output;
 	}
-	public function set_subjects() {
+	private function set_subjects() {
 		$output = '';
 		$subjects = [];
 		foreach ($this->courses as $course ) {
@@ -264,7 +278,7 @@ class AB11_OS_FE {
 		return $subjects;
 	}
 
-	public function set_calendar () {
+	private function set_calendar () {
 		$chunks = str_split( $this->semester_id, 1 );
 		$output = '';
 
@@ -290,10 +304,28 @@ class AB11_OS_FE {
 
 		$page = $this->wpdb->get_row( $query );
 
-		// $page = $this->wpdb->get_row("SELECT * FROM " . );
-		$output = $page->post_content;
+		$output = '<div id="container-calendar" class="grid-12 container-calendar">';
+
+		$output .= $page->post_content;
+
+		$output .= '</div>';
+
 		apply_filters('the_content', $output);
 		return $output;
+	}
+
+	private function set_filters () {
+			$args = $_POST;
+			// $filters	=	isset( $args['filters'] ) ? $args['filters'] : NULL;
+			$filters = [];
+			// $filters = wp_parse_args( $filters, $this->filters );
+			foreach ($args as $key => $value) {
+				if ( strpos( $key, 'filter-' ) !== FALSE ) {
+					$filter = substr( $key, 7 );
+					$filters[$filter] = $value;
+				}
+			}
+			return $filters;
 	}
 	public function get_semester() {
 		return var_dump( $this->semester_id );
@@ -312,30 +344,51 @@ class AB11_OS_FE {
 
 	public function get_courses() {
 		$args = isset( $_POST ) ? $_POST : [];
+		$this->filters = $this->set_filters();
+
+		$this->rendered_courses = '<ul id="ab11-os-class-list" class="ab11-os-class-list grid-12 small">';
+
 		foreach ($this->courses as $course) {
 
-			$filtered = $this->filter_course( $course, $args );
+			$filtered = $this->filter_course( $course, $this->filters );
 
-			$this->rendered_courses .= $this->render_course( $filtered );
+			if(! is_null($filtered) ){
+				$this->rendered_courses .= $this->render_course( $filtered );
+			}
 		}
-
+		$this->rendered_courses .= '</ul><!--end course list ul-->';
 		return $this->rendered_courses;
 		die();
 	}
 
 	public function get_course_detail() {
 		$args = isset( $_POST ) ? $_POST :  [];
+		$output = '';
+		foreach ($this->courses as $course) {
+			if ( $course['course_number'] == $args['course_number'] ){
+				$output = $this->render_course_detail( $course );
+			}
+		}
+		return $output;
 	}
 
-	private function filter_course( $course, $args ) {
-		$defaults = [
-			'subject' => NULL
-			];
-		$args = wp_parse_args( $args['filters'], $defaults );
+	public function get_breadcrumbs( $state ){
+		$this->breadcrumbs = '<p id="breadcrumbs" class="breadcrumbs breadcrumbs-schedule">';
+		if (is_array( $state ) ){
+			foreach ($state as $value ) {
+				$this->breadcrumbs .= $this->render_breadcrumbs( $value );
+			}
+		}
+		$this->breadcrumbs .= '</p>';
+		return $this->breadcrumbs;
+		die();
+	}
+	private function filter_course( $course, $filters ) {
 
-		if ( strcmp($course['subject'], $args['subject'] ) == 0 ){
+
+		if ( strcmp($course['subject'], $this->filters['subject'] ) == 0 ){
 			return $course;
-		} elseif ( strcmp( $args['subject'], 'ALL' ) == 0 ){
+		} elseif ( strcmp( $this->filters['subject'], 'ALL' ) == 0 ){
 			return $course;
 		} else {
 			return NULL;
@@ -384,13 +437,19 @@ class AB11_OS_FE {
 					$output .= $c['course_number'];
 				$output .= '</li>';
 				$output .= '<li class="course-title">';
-					$output .= $c['subject'] . ' ' . $c['catalog'] . ' ' . $c['section'] . ' ' . $c['long_title'];
+					$output .= $c['subject'] . ' ' . $c['catalog'] . ' ' . $c['section'];
+				$output .= '</li>';
+				$output .= '<li class="course-long-title">';
+					$output .= $c['long_title'];
 				$output .= '</li>';
 				$output .= '<li class="days">';
 					$output .= $this->render_days( $c['days'] );
 				$output .= '</li>';
 				$output .= '<li class="time">';
 					$output .= $this->render_time( $c );
+				$output .= '</li>';
+				$output .= '<li class="instructor">';
+					$output .= $c['last_name'];
 				$output .= '</li>';
 				$output .= '<li class="length">';
 					$output .= $this->render_length( $c );
@@ -481,6 +540,234 @@ class AB11_OS_FE {
 		return $output;
 	}
 
+	private function render_room( $room ){
+		return ( empty($room )  ) ? 'N/A' : $room;
+
+	}
+
+	private function render_mode_description( $mode ){
+		$output = $mode . ': ';
+		switch ( $mode ) {
+			case 'Interactive Classroom Video':
+				$output .='Synchronous (at a specfic time) courses that are delivered at RCC via Interactive video. ';
+				$output .= 'Interactive video courses are more like traditional courses. Class attendance ';
+				$output .= 'is required; however, they are more flexible in that the students may attend ';
+				$output .= 'the campus most convenient to them, Warsaw, Glenns, and occasionally other ';
+				$output .= 'distant sites. Interactive Video classes are just that-students and faculty ';
+				$output .= 'interact over high speed communication lines and televisions. These courses are ';
+				$output .= 'found in the schedule with IV (Interactive Video). Interactive Video courses have ';
+				$output .= 'orientation at the first class meeting. To identify these courses in the class ';
+				$output .= 'schedule, look for the IV icon throughout the schedule with section number of 66-69 & 84.';
+				break;
+			case 'Online':
+				$output .= 'Asynchronous (anytime) courses where the instructor and the students are separated not only by ';
+				$output .= 'distance but often by time as well. Some Online courses are taught via the Internet ';
+				$output .= 'through Blackboard an online course management tool and may make use of CDROM technology, ';
+				$output .= 'videos, or computers in other ways to enhance or teach the course. These courses require ';
+				$output .= 'proficiency in accessing the Internet and in sending/receiving e-mail including attachments. ';
+				$output .= 'All courses require a minimum of two proctored tests at an RCC site and the use of e-mail as ';
+				$output .= 'a communication tool. Students must either have Internet access at home or work or have ';
+				$output .= 'access to RCC computers. Online courses are also found in the schedule with section number of 63-64.';
+				break;
+			case 'In Person':
+				$output .= 'Synchronous (at a specific time) courses that are presented in traditional fashion. Typically ';
+				$output .= 'meeting 1-5 times per week depending on the amount of credits the course is alloted.';
+				break;
+			case 'Hybrid':
+				$output .= 'A blend of traditional and distance learning courses. “Hybrid” is the name commonly ';
+				$output .= 'used nationwide to describe courses that combine face-to-face classroom instruction ';
+				$output .= 'with course learning online. These courses will use a significant amount of time with ';
+				$output .= 'course learning online and, as a result, reduce the amount of classroom seat time. Out ';
+				$output .= 'of class time will be delivered through technology at the convenience of the student. ';
+				$output .= 'Hybrid course are found in the schedule with the HYB icon. These courses require a first ';
+				$output .= 'class meeting, where each instructor will give the specifics of when and how often they ';
+				$output .= 'will meet on campus.';
+				break;
+			default:
+				$output = $mode;
+				break;
+		}
+
+		return $output;
+	}
+
+	private function render_bookstore ($course ){
+		$storeid = (strcmp($course["location"],"WARSAW")==0||strcmp($course["location"],"KGEORGE")==0) ?
+			3073 : 495;
+		$url = 'http://www.bkstr.com/webapp/wcs/stores/servlet/booklookServlet%20?bookstore_id-1='.
+			$storeid.'&term_id-1='.$this->semester_id.'&crn-1='.$course['course_number'];
+		$ch = curl_init($url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+		$contents = curl_exec($ch);
+		curl_close($ch);
+		$output = '';
+
+		$output .= '';
+		$output .= '<a href="' . $url . '"target="_blank">For more information and purchasing options, click here.</a><br />';
+
+		$start = strpos($contents,'<h2 class="floatLeft paddingLeft1em">RESULTS FOR:</h2>');
+		$filtered = preg_replace("/<([a-z][a-z0-9]*)[^>]*?(\/?)>/i",'<$1$2>', $contents);
+		$filtered = preg_replace("/[\t\r\n]/", "" , $filtered);
+
+		preg_match_all("/<h[2-3]>(.*?)<\/h[2-3]>/i", $filtered, $matched);
+		foreach (array_slice($matched[0],3) as $value) {
+			$temp = preg_replace( "/<h[2-3]>/", '<span>' ,$value );
+			$temp = preg_replace( "/<\/h[2-3]>/", '</span><br />' ,$temp );
+			$output .= $temp;
+		}
+		$output .= '</ul>';
+		return $output;
+	}
+	private function render_breadcrumbs( $state ){
+		$output = '';
+		switch ( $state ) {
+			case 'semester':
+				$output .= '<span><a href="?function=get_semester&semester_id=' . $this->semester_id .
+				'&career=' . $this->career . '">' . $this->decrypt_semester_id($this->semester_id) . '</a></span>';
+				break;
+			case 'calendar':
+				$output .= '<span class="separator">»</span><span id="Calendar"><a href="?function=get_calendar' .
+				'&semester_id=' . $this->semester_id . '&career=' . $this->career . '">Calendar</a></span>';
+				break;
+			case 'courses':
+				$output .= '<span class="separator">»</span><span id="Courses"><a href="?function=get_courses' .
+				'&semester_id=' . $this->semester_id . '&career=' . $this->career . '&filters=';
+
+				foreach ($this->filters as $key => $value) {
+					$output .= $key . ':' . $value . '|';
+				}
+
+				$output .= '">Courses</a></span>';
+				break;
+			default:
+				# code...
+				break;
+		}
+
+		return $output;
+	}
+
+	private function render_course_detail( $course ){
+		$c = $course;
+
+
+		$output = '<ul class="course-details">';
+		$output .= '<li class="course-title"><span class="course-detail-label">' . 'Title: ' . '</span>';
+
+			$output .= $c['subject'] . ' ' . $c['catalog'] . ' ' . $c['section'] . ' ' . $c['long_title'];
+		$output .= '</li>';
+		$output .= '<li class="status"><span class="course-detail-label">' . 'Status: ' . '</span>';
+
+		$output .= $c['status'];
+
+		$output .= '</li>';
+				$output .= '<li class="course-number"><span class="course-detail-label">' . 'Course Number: ' . '</span>';
+
+		$output .= $c['course_number'];
+
+		$output .= '</li>';
+				$output .= '<li class="days"><span class="course-detail-label">' . 'Days: ' . '</span>';
+
+		$output .= $this->render_days( $c['days'] );
+
+		$output .= '</li>';
+				$output .= '<li class="time"><span class="course-detail-label">' . 'Time: ' . '</span>';
+
+		$output .= $this->render_time( $c );
+
+		$output .= '</li>';
+				$output .= '<li class="instructor"><span class="course-detail-label">' . 'Instructor: ' . '</span>';
+
+		$output .= $c['first_name'] . ' ' . $c['last_name'];
+
+		$output .= '</li>';
+				$output .= '<li class="session"><span class="course-detail-label">' . 'Session: ' . '</span>';
+
+		$output .= $c['session'];
+
+		$output .= '</li>';
+				$output .= '<li class="room"><span class="course-detail-label">' . 'Room: ' . '</span>';
+
+		$output .= $this->render_room( $c['room'] );
+
+		$output .= '</li>';
+				$output .= '<li class="credits"><span class="course-detail-label">' . 'Credits: ' . '</span>';
+
+		$output .= $c['credits'];
+
+		$output .= '</li>';
+				$output .= '<li class="location"><span class="course-detail-label">' . 'Location: ' . '</span>';
+
+		$output .= $this->render_location( $c['location'] );
+
+		$output .= '</li>';
+				$output .= '<li class="notes"><span class="course-detail-label">' . 'Notes: ' . '</span>';
+
+		$output .= '<span class="long">' . $c['notes'] . '</span>';
+
+		$output .= '</li>';
+				$output .= '<li class="course-description"><span class="course-detail-label">' . 'Course Description: ' . '</span>';
+
+		$output .= '<span class="long">' . $c['course_description'] . '</span>';
+
+		$output .= '</li>';
+				$output .= '<li class="mode-description"><span class="course-detail-label">' . 'Mode: ' . '</span>';
+
+		$output .= '<span class="long">' . $this->render_mode_description( $c['mode_description'] ) . '</span>';
+
+		$output .= '</li>';
+				$output .= '<li class="seats"><span class="course-detail-label">' . 'Seats: ' . '</span>';
+
+		$output .= $c['tot_enrl'] . ' / ' . $c['cap_enrl'];
+
+		$output .= '</li>';
+				$output .= '<li class="length"><span class="course-detail-label">' . 'Course Length: ' . '</span>';
+
+		$output .= $this->render_length( $c );
+
+		$output .= '</li>';
+				$output .= '<li class="census-date"><span class="course-detail-label">' . 'census_date: ' . '</span>';
+
+			$output .= $c['census_date'];
+		$output .= '</li>';
+				$output .= '<li class="withdraw-date"><span class="course-detail-label">' . 'Last day to Withdraw: ' . '</span>';
+
+		$output .= $c['withdrawal_date'];
+
+		$output .= '</li>';
+				$output .= '<li class="bookstore"><span class="course-detail-label">' . 'Bookstore: ' . '</span>';
+
+		$output .= '<span class="long">' . $this->render_bookstore( $c ) . '</span>';
+
+		$output .= '</li>';
+	$output .= '</ul>';
+
+		return $output;
+	}
+	private function decrypt_semester_id( $semester_id ) {
+	$chunks = str_split( $semester_id, 1 );
+	$output = '';
+
+	switch ($chunks[3]) {
+	 	case '2':
+		 	$output .= 'Spring 201' . $chunks[2];
+	 		break;
+
+	 	case '3':
+		 	$output .= 'Summer 201' . $chunks[2];
+	 		break;
+
+	 	case '4':
+		 	$output .= 'Fall 201' . $chunks[2];
+	 		break;
+
+	 	default:
+	 		$output .= 'Semester 201' . $chunks[2];
+	 		break;
+	 }
+	 return $output;
+	}
 }
 
 ?>

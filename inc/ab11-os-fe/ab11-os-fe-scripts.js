@@ -10,52 +10,6 @@
 *
 * -----------------------------------------------------------------*/
 jQuery(document).ready(function($){
-
-var History = window.History;
-if (History.enabled) {
-    State = History.getState();
-    // set initial state to first page that was loaded
-    History.pushState({urlPath: window.location.pathname}, $("title").text(), State.urlPath);
-} else {
-    return false;
-}
-
-var loadAjaxContent = function(target, urlBase, selector) {
-    $(target).load(urlBase + ' ' + selector);
-};
-
-var updateContent = function(State) {
-    var selector = '#' + State.data.urlPath.substring(1);
-          console.log('in updateContent, url =', State.url);
-
-    if ($(selector).length) { //content is already in #hidden_content
-        $('#container-content').children().appendTo('#hidden-container-content');
-        $(selector).appendTo('#container-content');
-    } else {
-        $('#container-content').children().clone().appendTo('#hidden-container-content');
-        loadAjaxContent('#container-content', State.url, selector);
-    }
-};
-
-// Content update and back/forward button handler
-History.Adapter.bind(window, 'statechange', function() {
-    updateContent(History.getState());
-});
-
-
-// var State = History.getState(); // Note: We are using History.getState() instead of event.state
-
-//  // Bind to StateChange Event
-// History.Adapter.bind(window,'statechange',function(){ // Note: We are using statechange instead of popstate
-//     var State = History.getState(); // Note: We are using History.getState() instead of event.state
-//     get_URL_vars();
-
-// 		if ( State.title == 'get_semester' ){
-// 			// get_semester();
-// 		}
-// });
-
-
 /* ==================================================================
 *
 *   Variables
@@ -69,6 +23,12 @@ var $body = $('body');
 $body.data('ab11-os', {} );
 var $data = $body.data('ab11-os');
 $data['action'] = 'ab11_os_ajax';
+// $data['filters'] = {};
+// $data['filters'].subject = '';
+// $data['filters'].time = '';
+// $data['filters'].day = '';
+// $data['filters'].session = '';
+// $data['filters'].location = '';
 
 var $options_bar = $('#horz-menu--options-bar');
 
@@ -85,11 +45,11 @@ var $button_options = $options_bar.find('#horz-menu-list-item--options');
 var $list_options = $options_bar.find('#horz-menu-sublist--options');
 var $dropdown_options = $options_bar.find('#hidden-options');
 
-var $container_content = $('#container-content');
+var $container_ajax = $('#container-ajax');
 
-var $breadcrumbs_schedule = $container_content.find('#breadcrumbs');
-var $list_classes = $container_content.find('#ab11-os-class-list');
-var $container_calendar = $container_content.find('#container-calendar');
+var $breadcrumbs_schedule = $('#breadcrumbs');
+var $list_classes = $container_ajax.find('#ab11-os-class-list');
+var $container_calendar = $container_ajax.find('#container-calendar');
 var $container_cubes = $('#container-cubes');
 
 /* ==================================================================
@@ -99,22 +59,48 @@ var $container_cubes = $('#container-cubes');
 * -----------------------------------------------------------------*/
 $(document.body).delegate('#horz-menu-sublist--semesters .select-semester', 'click', get_semester);
 $(document.body).delegate('#horz-menu-sublist--subjects .select-subject', 'click', get_courses);
+$(document.body).delegate('#ab11-os-class-list .course', 'click', get_course_detail);
+$(document.body).delegate('#options-submit', 'click', save_options);
 
 if($list_subjects.length){
 		$(document.body).delegate('#hidden-subjects li', {
-			mouseenter: tooltip_enter,
-			mouseleave: tooltip_leave
+			mouseenter: ab11_tooltip_enter,
+			mouseleave: ab11_tooltip_leave
 		});
 	}
 
-// navigation link handler
-$('#horz-menu-sublist--semesters .select-semester').on('click', 'a', function(e) {
-    var urlPath = $(this).attr('href');
-    var title = $(this).text();
-    History.pushState({urlPath: urlPath}, title, urlPath);
-    // get_semester();
-    return false; // prevents default click action of <a ...>
+/* ==================================================================
+*
+*   History
+*
+* -----------------------------------------------------------------*/
+var $state = History.getState(); // Note: We are using History.getState() instead of event.state
+// var $state_toggle = true;
+//  // Bind to StateChange Event
+History.Adapter.bind(window,'statechange',function(){ // Note: We are using statechange instead of popstate
+	$state = History.getState(); // Note: We are using History.getState() instead of event.state
 });
+//   get_URL_vars();
+
+// 	if ( $state_toggle == true){
+// 		$state = History.getState(); // Note: We are using History.getState() instead of event.state
+// 		if ( $state.id == $('#hidden-container-content div').prop('id')){
+// 			var $clone = $('#' + $state.id).clone();
+
+
+// 			$container_ajax.html($clone);
+// 		}
+// 		console.log('T ' + $state.id);
+// 	} else {
+// 		var $clone = $container_ajax.clone();
+// 		$clone.prop('id', $state.id);
+// 		$clone.appendTo('#hidden-container-content');
+// 		console.log('F ' + $state.id);
+
+// 	}
+
+// 	$state_toggle = true;
+// });
 
 /* ==================================================================
 *
@@ -134,7 +120,7 @@ $body.click(function() {
 });
 
 function ab11_os_ajax_test() {
-	console.log( '$data ' + $.type($data) );
+	console.log( '$_POST $data ' + $.type($data) );
 
 	$.each($data, function (key, value) {
 		if ( value === Object(value) ) {
@@ -158,7 +144,6 @@ function ab11_os_php_test(){
 		url: AJAX_URL,
 		data: $data,
 		success: function (output) {
-			// $body.prepend(output);
 			console.log( 'PHP Output' );
 			console.log( output );
 			console.log( ' ' );
@@ -172,10 +157,22 @@ function ab11_os_php_test(){
 *
 * -----------------------------------------------------------------*/
 function init(e) {
-	//grab URL variables and save to the $data object
 	get_URL_vars();
-	// History.pushState({state:'init', rand:Math.random()}, 'init', '?state=init');
-	$data['state'] = State;
+	if( $data['url'] ){
+
+		$.ajax({
+			type: 'POST',
+			url: AJAX_URL,
+			data: $data,
+			success: function (output) {
+				ab11_os_ajax_test();
+				ab11_os_php_test();
+				$container_ajax.addClass('is-hidden').html(output).fadeIn().removeClass('is-hidden');
+				$data['url'] = false;
+			}
+		});
+	}
+
 }
 
 /* ==================================================================
@@ -185,24 +182,18 @@ function init(e) {
 * -----------------------------------------------------------------*/
 function get_URL_vars () {
 	//Gather options from URL
+	$data['url'] = false;
+
 	var vars = {};
 	var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&#]*)/gi, function(m, key, value) {
+
 		vars[key] = value;
+		$data[key] = value;
+		$data['url'] = true;
 	});
-	$data['url'] = vars;
 }
 
 
-/* ==================================================================
-*
-*   Triggers AJAX actions on state change
-*
-* -----------------------------------------------------------------*/
-function trigger_ajax( s ){
-
-	console.log( s );
-	// switch( $data['url']['state']){}
-}
 /* ==================================================================
 *
 *   Select a Semester
@@ -212,7 +203,6 @@ function get_semester(e) {
 	if ( e ) {
 		e.preventDefault();
 	}
-
 	var $text = $(this).text();
 
 	$data['semester_id'] = $(this).data('semester-id');
@@ -223,12 +213,15 @@ function get_semester(e) {
 		url: AJAX_URL,
 		data: $data,
 		success: function (output) {
-			// History.pushState({state:'get_semester',data:$data}, "get_semester", "?state=get_semester&semester_id=" + $data['semester_id']);
-			$container_calendar.addClass('is-hidden');
+							ab11_os_ajax_test();
+
+			History.pushState(
+				{state:'get_semester', rand:Math.random()},
+				"Online Schedule::RCC",
+				"?function=get_semester&semester_id=" + $data['semester_id'] +
+				"&career=" + $data['career']);
 			$body.prepend(output);
-			$breadcrumbs_schedule.html('<span><a href="#">' + $text + '</a></span>');
 			get_subjects();
-			$list_classes.empty();
 		}
 	});
 }
@@ -270,12 +263,14 @@ function get_calendar(e){
 		url: AJAX_URL,
 		data: $data,
 		success: function (output) {
-			History.pushState({state:'get_calendar',rand:Math.random()}, "get_calendar", "?state=get_calendar&semester_id=" + $data['semester_id']);
 
-			$container_calendar.html(output).removeClass('is-hidden');
-			$container_cubes.addClass('is-hidden');
-			$breadcrumbs_schedule.append('<span class="separator">&raquo;</span><span><a href="#">Calendar</a></span>')
-			.removeClass('is-hidden');
+			$container_ajax.addClass('is-hidden').html(output).fadeIn().removeClass('is-hidden');
+
+			History.pushState(
+				{state:'get_calendar', rand:Math.random()},
+				"Online Schedule::RCC",
+				"?function=get_calendar&semester_id=" + $data['semester_id'] +
+				"&career=" + $data['career']);
 
 		}
 	});
@@ -290,34 +285,125 @@ function get_courses(e) {
 	if ( e ) {
 		e.preventDefault();
 	}
-	$data['filters'] = {
-		'subject' : $(this).data('subject') ? $(this).data('subject') : 'ALL'
-	};
+	$data['filter-subject'] = $(this).data('subject') ? $(this).data('subject') : 'ALL';
+
 	$data['function'] = 'get_courses';
 	$.ajax({
 		type: 'POST',
 		url: AJAX_URL,
 		data: $data,
 		success: function (output) {
-			History.pushState({state:'get_courses',rand:Math.random()}, "get_courses",
-				"?state=get_courses&semester_id="	+ $data['semester_id'] +
-				stringify_filters( $data['filters'] ) );
-
+			$container_ajax.addClass('is-hidden').html(output).fadeIn().removeClass('is-hidden');
 			// ab11_os_ajax_test();
-			$list_classes.html(output);
-			$container_calendar.addClass('is-hidden');
-			$list_classes.removeClass('is-hidden').fadeIn();
-			$breadcrumbs_schedule.append('<span class="separator">&raquo;</span><span><a href="#">Courses</a></span>')
+			// ab11_os_php_test();
+
+
+			History.pushState(
+				{state:'get_courses',rand:Math.random()},
+				"Online Schedule::RCC",
+				"?function=get_courses&semester_id="	+ $data['semester_id'] +
+				"&career=" + $data['career'] +
+				ab11_stringify_filters( $data ) );
+			// get_URL_vars();
 		}
 	});
 }
 
 /* ==================================================================
 *
+*   Get detailed course info
+*
+* -----------------------------------------------------------------*/
+function get_course_detail(e){
+	if ( e ) {
+		e.preventDefault();
+	}
+	$('#mask').fadeIn().removeClass('is-hidden');
+	$data['course_number'] = $(this).find('li.course-number').html();
+	$data['function'] = 'get_course_detail';
+	$.ajax({
+		type: 'POST',
+		url: AJAX_URL,
+		data: $data,
+		success: function (output) {
+			$('#modal-course-detail').find('#course-detail').html(output).fadeIn();
+			$('#modal-course-detail').removeClass('is-hidden').addClass('is-active');
+
+			center_modal($('#modal-course-detail'));
+			close_modal();
+
+			History.pushState(
+				{state:'get_course_detail',rand:Math.random()},
+				"Online Schedule::RCC",
+				"?function=get_course_detail&semester_id="	+ $data['semester_id'] +
+				"&career=" + $data['career'] +
+				"&course_number=" + $data['course_number'] +
+				ab11_stringify_filters( $data ) );
+		}
+	});
+}
+
+
+/* ==================================================================
+*
+*   Save Options
+*
+* -----------------------------------------------------------------*/
+function save_options(e){
+	$data['filter-time'] = $('input.time:checked').val();
+	$data['filter-location'] = $('input.location:checked').map(function(i,n){
+		return $(n).val();
+	}).get();
+	$data['filter-mode'] = $('input.mode:checked').map(function(i,n){
+		return $(n).val();
+	}).get();
+	$data['filter-mode'] = $('input.day:checked').map(function(i,n){
+		return $(n).val();
+	}).get();
+	ab11_os_ajax_test();
+	return false;
+}
+/* ==================================================================
+*
+*   Close Modals
+*
+* -----------------------------------------------------------------*/
+function close_modal(e){
+	if ( e ) {
+		e.preventDefault();
+	}
+
+	$('#mask, .modal-close').click(function(evt) {
+		$('.modal').removeClass('is-active');
+		$('#mask').fadeOut().addClass('is-hidden');
+		evt.stopPropagation();
+
+	});
+}
+
+/* ==================================================================
+*
+*   Center Modal
+*
+* -----------------------------------------------------------------*/
+function center_modal($modal){
+	var top, left, height;
+
+  top = Math.max($(window).height() - $modal.outerHeight(), 0) / 2;
+  left = Math.max($(window).width() - $modal.outerWidth(), 0) / 2;
+  height = $modal.find('.modal-content').height();
+  $modal.css({
+      top:top + $(window).scrollTop(),
+      left:left + $(window).scrollLeft(),
+      height:height
+  });
+}
+/* ==================================================================
+*
 *   Hover on tooltip
 *
 * -----------------------------------------------------------------*/
-function tooltip_enter(e){
+function ab11_tooltip_enter(e){
 	var $node = $(e.target);
 	var top = $node.position().top;
 
@@ -330,16 +416,20 @@ function tooltip_enter(e){
 
 }
 
-function tooltip_leave(e){
+function ab11_tooltip_leave(e){
 
 }
 
-function stringify_filters(filters){
+function ab11_stringify_filters( data ){
 	var output = '';
-	$.each(filters, function(k, v){
-		output += '&' + k + '=' + v;
+	$.each(data, function(k, v){
+		if (v.length && k.indexOf('filter-') != -1 ){
+					output += '&' + k + '=' + v;
+
+		}
 	});
 
 	return output;
 }
+
 });//end jQuery

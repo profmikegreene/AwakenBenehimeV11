@@ -51,7 +51,10 @@ if( $('#site-search:has(.is-active)') ){
 
 	function close_menus() {
 		$('.is-hover').removeClass('is-hover');
-		}
+	}
+
+
+
 	function horizontal_touch_dropdown($menu) {
 
 

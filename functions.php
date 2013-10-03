@@ -682,34 +682,50 @@ function ajax_controller () {
 	}
 
 	if ( isset( $_SESSION['ab11_os_fe_schedule'] ) ) {
+
+
 		switch($_POST['function']) {
 			case 'get_semester':
 				if ( isset( $_SESSION['ab11_os_fe_schedule'] ) ) {
 					unset( $_SESSION['ab11_os_fe_schedule'] );
 				}
-			 	$_SESSION['ab11_os_fe_schedule'] = new AB11_OS_FE();
+			 	$_SESSION['ab11_os_fe_schedule'] = new AB11_OS_FE( $_POST );
+
 				break;
 			case 'get_subjects':
 				echo $_SESSION['ab11_os_fe_schedule']->get_subjects();
 		 		break;
 			case 'get_calendar':
+				$_SESSION['ab11_os_fe_schedule']->set_param( array('breadcrumbs' => '') );
+				echo $_SESSION['ab11_os_fe_schedule']->get_breadcrumbs( array('semester', 'calendar') );
+
 				echo $_SESSION['ab11_os_fe_schedule']->get_calendar();
 		 		break;
 			case 'get_courses':
+				$_SESSION['ab11_os_fe_schedule']->set_param( array('breadcrumbs' => '') );
+
+				echo $_SESSION['ab11_os_fe_schedule']->get_breadcrumbs( array('semester', 'calendar', 'courses') );
 				echo $_SESSION['ab11_os_fe_schedule']->get_courses();
+		 		break;
+		 	case 'get_course_detail':
+		 		echo $_SESSION['ab11_os_fe_schedule']->get_course_detail();
 		 		break;
 			case 'test':
 				echo $_SESSION['ab11_os_fe_schedule']->test();
 		 		break;
 		}
-		die();
+
 	} else {
-		$_SESSION['ab11_os_fe_schedule'] = new AB11_OS_FE();
+		$_SESSION['ab11_os_fe_schedule'] = new AB11_OS_FE( $_POST );
 	}
+
+	die();
 }
+
 if( isset( $_REQUEST['action'] ) ) {
   do_action( 'wp_ajax_' . $_REQUEST['action'] );
   do_action( 'wp_ajax_nopriv_' . $_REQUEST['action'] );
 }
+
 
 ?>

@@ -3,6 +3,10 @@
 }
 .icon-loading {
   background:transparent url('/wp-content/themes/AwakenBenehimeV11/img/ajax-loading.gif') no-repeat;
+  width:30px;
+  height: 30px;
+  margin: 50% auto 0;
+  display: block;
 }
 .icon-r-dropdown-arrow,
 .icon-l-dropdown-arrow,

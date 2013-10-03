@@ -1,13 +1,38 @@
-.modal,
-.mask {
+.modal {
 	display: none;
-}
-.mask {
 	position: absolute;
 	left: 0;
 	top: 0;
-	width:100%;
-	height:100%;
-	z-index: 999;
-	background-color: #000;
+	width:50%;
+	height:50%;
+	z-index: 9999;
+	margin: 0 auto;
+	background: #fff;
+	padding:24px;
+}
+.modal.is-active {
+	display: block;
+	top:10%;
+}
+.modal-close {
+	position: absolute;
+	right:-10px;
+	top:-10px;
+	background: #fff;
+	color:#0073cf;
+	padding:5px 12px;
+	text-decoration: none;
+	border: 3px solid #0073cf;
+	border-radius: 50%;
+}
+#mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    z-index: 9998;
 }
