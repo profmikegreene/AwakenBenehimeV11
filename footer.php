@@ -40,9 +40,9 @@
         <h2>Watch</h2>
     </div>
     <div class="cube grid-2 cube-social cube16" id="cube16">
-        <h2>Read</h2>
+        <h2>See</h2>
     </div>
-    <a href="https://alert.rappahannock.edu" class="cube grid-2 cube-social cube17 bigger" id="cube17">Alert</a>
+    <a href="https://alert.rappahannock.edu" class="cube grid-2 cube-social cube17 bigger" id="cube17">RCC Alert</a>
     <div class="cube grid-2 cube-social cube18" id="cube18">
         <h2>Learn</h2>
     </div>

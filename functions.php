@@ -642,6 +642,23 @@ function ab11_columns_remove_date($defaults) {
 }
 add_filter('manage_page_posts_columns', 'ab11_columns_remove_date');
 
+/* ==================================================================
+*
+*   Creates Page Template Column
+*   on manage pages screen
+* -----------------------------------------------------------------*/
+function ab11_add_page_template_column($columns) {
+    return array_merge( $columns,
+              array("page_template" => __("Page Template")) );
+}
+add_filter("manage_pages_columns" , "ab11_add_page_template_column");
+
+function ab11_page_template_column ( $column, $post_id ){
+  if( "page_template" == $column ) {
+    echo get_post_meta( $post_id, '_wp_page_template', true );
+  }
+}
+add_action( "manage_pages_custom_column" , "ab11_page_template_column", 10, 2 );
 
 
 /**

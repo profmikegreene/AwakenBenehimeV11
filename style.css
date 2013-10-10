@@ -9,14 +9,35 @@ Version: 11.0.0
 This file is a placeholder for Wordpress. CSS is found in the /css folder and is concatenated by the
 HTML5 Boilerplate build script
 
+Color Scheme
+*   RCC Blue   : 0073cf
+*   RCC Green  : 00b588
+*
+*   10% Blue   : d6e1eb
+*   30% Blue   : a6c9e5
+*   60% Blue   : 5fa4db
+*   130% Blue  : 00457c
+*   160% Blue  : 00233f
+*   190% Blue  : 000c15    //Use instead of black
+*
+*   Dark Grey  : 333333
+*   Grey  		 : 575757
+*
+*   Purple     : a612d1
+*   Orange     : cf5c00
+*   Pink       : cf0073
+*   Green      : 73cf00
 
-Plugins required by theme
+Wordpress Plugins required by theme
 Wordpress SEO by YOAST
 akismet
 RoyalSlider
 Tinymce Advanced
 
+Custom Plugins required by theme
 ab11-custom-post-type--homepage.php
 ab11-custom-widget.php
+
+CSS Styles
 
 */

@@ -60,18 +60,15 @@ get_header(); ?>
 					<p><?php _e('Sorry, no posts matched your criteria.'); ?></p>
 			<?php endif; ?>
 
-			<?php ab11_cubes_output($cubes['01']); ?>
-			<?php ab11_cubes_output($cubes['02']); ?>
-			<?php ab11_cubes_output($cubes['03']); ?>
-			<?php ab11_cubes_output($cubes['04']); ?>
-			<?php ab11_cubes_output($cubes['05']); ?>
-			<?php ab11_cubes_output($cubes['06']); ?>
-			<?php ab11_cubes_output($cubes['07']); ?>
-			<?php ab11_cubes_output($cubes['08']); ?>
-			<?php ab11_cubes_output($cubes['09']); ?>
-			<?php ab11_cubes_output($cubes['10']); ?>
-			<div class="grid-3 rappening-title">
-					<h2 class="no-margin">Recent Rappenings</h2>
+			<?php
+				foreach ( $cubes as $cube ) {
+					ab11_cubes_output( $cube );
+				}
+			?>
+		</div><!--end .container-cubes -->
+		<div id="container-highlights" class="container container-cubes clear-left clearfix">
+			<div class="grid-3 highlight-title">
+					<h2 class="no-margin">Recent highlights</h2>
 					<p class="tagline no-margin">A look into the daily life of RCC.</p>
 			</div>
 			<?php
@@ -91,7 +88,7 @@ get_header(); ?>
       if($posts){
 	      foreach($posts as $post){
 	        setup_postdata($post);
-					$thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id(), 'rappening');
+					$thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id(), 'highlight');
 					$default_attr = array(
 						'class'	=> "attachment",
 						'alt'	=> trim(strip_tags( $post->post_title )),
@@ -99,13 +96,13 @@ get_header(); ?>
 						'width' => 'auto',
 						'height' => 'auto'
 					);
-					$image_url = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'rappening');
+					$image_url = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'highlight');
 					if (has_post_thumbnail()) {
-					echo '<a href="' . get_permalink() . '" class="cube rcc-blue grid-3 rappening" title="Posted '. get_the_time("j F Y | g:i a"). '">'.
+					echo '<a href="' . get_permalink() . '" class="cube rcc-blue grid-3 highlight" title="Posted '. get_the_time("j F Y | g:i a"). '">'.
 							 '<img src="'.$image_url[0].'" alt="'.get_the_title().'" />'.get_the_title().'</a>';
 					}
 					else {
-						echo '<a href="' . get_permalink() . '" class="cube grid-3 rcc-blue rappening" title="Posted '. get_the_time("j F Y | g:i a"). '">'.
+						echo '<a href="' . get_permalink() . '" class="cube grid-3 rcc-blue highlight" title="Posted '. get_the_time("j F Y | g:i a"). '">'.
 							 '<img src="/wp-content/themes/css/images/default_thumb.png" alt="' . $posts[$i]->post_title . '" />'.
 							 get_the_title().'</a>';
 					}
@@ -115,7 +112,7 @@ get_header(); ?>
 
       restore_current_blog();
       ?>
-		</div><!-- .container-cubes -->
+		</div><!-- .container-highlights -->
 	</div><!-- #content -->
 </div><!-- #primary -->
 <?php get_footer(); ?>

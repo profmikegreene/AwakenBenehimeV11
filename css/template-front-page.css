@@ -4,6 +4,9 @@
 /*.template-front-page.logged-in .site-content {
 	padding-top: 40px;
 }*/
+.template-front-page .cube strong {
+	font-weight: 400;
+}
 .template-front-page .site-content img {
   max-width: 100%;
 }
@@ -40,15 +43,15 @@
 .template-front-page .potential-course:hover {
 	background:#575757;
 }
-.template-front-page .rappening-title{
+.template-front-page .highlight-title{
 	text-transform: uppercase;
 	text-align: right;
 	padding:0;
 }
-.template-front-page .rappening-title .tagline {
+.template-front-page .highlight-title .tagline {
 	text-transform: none;
 }
-.template-front-page .rappening {
+.template-front-page .highlight {
 	height:250px;
 	color:#fff;
 
@@ -82,20 +85,20 @@
 	.template-front-page .cube9 {
 		min-height:168px;
 	}
-	.template-front-page .rappening {
+	.template-front-page .highlight {
 		width:22.999%;
 	}
-	.template-front-page .rappening-title {
+	.template-front-page .highlight-title {
 		width: 100%;
 		text-align: left;
 	}
-	.template-front-page .rappening,
-	.template-front-page .rappening-title {
+	.template-front-page .highlight,
+	.template-front-page .highlight-title {
 		width:96%;
 		padding: 0;
 		height:auto;
 	}
-	.template-front-page .rappening img {
+	.template-front-page .highlight img {
 		display: block;
 	}
 }
@@ -103,7 +106,7 @@
 	.template-front-page {
 		font-size: .9em;
 	}
-	.template-front-page .rappening img {
+	.template-front-page .highlight img {
 		width:100%;
 	}
 	.template-front-page	.horz-menu--global {
@@ -118,9 +121,9 @@
 		top:-100px;
 		margin-bottom:-100px;
 	}
-	.template-front-page .cube1,
-	.template-front-page .cube2,
-	.template-front-page .cube3{
+	.template-front-page .cube-01,
+	.template-front-page .cube-02,
+	.template-front-page .cube-03{
 		opacity: .9;
 	}
 }

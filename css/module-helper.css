@@ -102,9 +102,18 @@
 
 /* ==================================================================
 *
-*   Wordpress helper classes
+*   helper classes
 *
 * -----------------------------------------------------------------*/
+.pos-r {
+    position: relative;
+}
+.pos-a {
+    position: absolute;
+}
+.pos-s {
+    position: static;
+}
 .aligncenter {
     margin-left:auto;
     margin-right:auto;
@@ -133,4 +142,7 @@
 }
 #wpadminbar {
     /*margin-bottom:28px;*/
+}
+.width-50 {
+    width: 50%;
 }
