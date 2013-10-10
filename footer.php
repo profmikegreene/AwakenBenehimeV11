@@ -74,6 +74,7 @@
         <?php wp_footer(); ?>
         <!-- //-beg- concat_js -->
         <script src="/wp-content/themes/AwakenBenehimeV11/js/polyfills.js"></script>
+        <!-- //-end- concat_js -->
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
@@ -81,6 +82,5 @@
             g.src='//www.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));
         </script>
-        <!-- //-end- concat_js -->
     </body>
 </html>
