@@ -46,6 +46,12 @@ remove_action('wp_head', 'start_post_rel_link', 10, 0);
 remove_action('wp_head', 'parent_post_rel_link', 10, 0);
 remove_action('wp_head', 'adjacent_posts_rel_link', 10, 0);
 
+function ab11_admin_area_favicon() {
+	$favicon_url = get_bloginfo('template_directory') . '/img/favicon.ico';
+	echo '<link rel="shortcut icon" href="' . $favicon_url . '" />';
+}
+add_action('admin_head', 'ab11_admin_area_favicon');
+
 // add post thumbnail support to posts and pages
 if ( function_exists( 'add_theme_support' ) ) {
     add_theme_support( 'post-thumbnails', array( 'post', 'page' ) );
