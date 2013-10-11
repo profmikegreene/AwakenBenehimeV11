@@ -134,3 +134,11 @@ Open Door Communications Brand Promise
 Rappahannock Community College recognizes that each student is unique and must follow his or her individual life path. RCC is committed to helping every student identify his or her educational path; to nurturing and promoting intellectual and personal growth; and to empowering his or her educational journey through an affirmative, total college experience. 
 
 >"Our job is to lift people up." That's the RCC brand promise in a nutshell
+
+##Launch##
+Main site create nav menues
+Upload plugin and JS dependencies
+
+
+##Fix##
+responsive billboard images

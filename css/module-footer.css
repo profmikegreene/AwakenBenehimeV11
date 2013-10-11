@@ -28,46 +28,46 @@
 .social-cube:hover {
 	background-color:#0073cf;
 }
-.cube13{
+.facebook{
 	background-color: #3b5998;
 	background-position: 0 -150px;
 }
-.cube13:hover {
+.facebook:hover {
 	background-position:0 0;
 }
-.cube14:hover {
+.twitter:hover {
 	background-position: -150px 0;
 }
-.cube14 {
+.twitter {
 	background-color: #33ccff;
 	background-position:-150px -150px;
 }
-.cube15:hover  {
+.youtube:hover  {
 	background-position: -300px 0;
 }
-.cube15{
+.youtube{
 	background-color: #c1302a;
 	background-position: -300px -150px;
 }
-.cube16:hover {
+.instagram:hover {
 	background-position: -450px 0;
 }
-.cube16 {
+.instagram {
 	background-color: #ed812f;
 	background-position: -450px -150px;
 }
-.cube17:hover {
+.rccalert:hover {
 	background-position: -600px 0;
 }
-.cube17 {
+.rccalert {
 	background-color:#333;
 	color:#000c15;
 	background-position: -600px -150px;
 }
-.cube18:hover {
+.panopto:hover {
 	background-position: -750px 0;
 }
-.cube18 {
+.panopto {
 	background-color: #29bb4e;
 	background-position: -750px -150px;
 }
@@ -125,82 +125,45 @@
 *   Responsive Styles
 *
 * -----------------------------------------------------------------*/
-@media only screen and (min-width: 823px) and (max-width: 980px) {
-	.cube13:hover {
-    background-position: -40px 0;
-  }
-  .cube13 {
-    background-position: -40px -150px;
-  }
-  .cube14:hover {
-    background-position: -190px 0;
-  }
-  .cube14 {
-    background-position: -190px -150px;
-  }
-  .cube15:hover {
-    background-position: -340px 0;
-  }
-  .cube15 {
-    background-position: -340px -150px;
-  }
-  .cube16:hover {
-    background-position: -490px 0;
-  }
-  .cube16 {
-    background-position: -490px -150px;
-  }
-  .cube17:hover {
-    background-position: -640px 0;
-  }
-  .cube17 {
-    background-position: -640px -150px;
-  }
-  .cube18:hover {
-    background-position: -790px 0;
-  }
-  .cube18 {
-    background-position: -790px -150px;
-  }
-}
+
 @media only screen and (max-width: 822px) {
 	.container-footer .cube-social {
 		width:95px;
 	}
-  .cube13 {
+  .facebook {
     background-position: -40px -150px;
   }
-  .cube13:hover {
+  .facebook:hover {
     background-position: -40px 0;
   }
-  .cube14:hover {
+  .twitter:hover {
     background-position: -190px 0;
   }
-  .cube14 {
+  .twitter {
     background-position: -190px -150px;
   }
-  .cube15:hover {
+  .youtube:hover {
     background-position: -340px 0;
   }
-  .cube15 {
+  .youtube {
     background-position: -340px -150px;
   }
-  .cube16:hover {
+  .instagram:hover {
     background-position: -490px 0;
   }
-  .cube16 {
+  .instagram {
     background-position: -490px -150px;
   }
-  .cube17:hover  {
+  .rccalert:hover  {
     background-position: -640px 0;
   }
-  .cube17{
+  .rccalert{
     background-position: -640px -150px;
   }
-  .cube18:hover  {
+  .panopto:hover  {
     background-position: -790px 0;
   }
-  .cube18{
+  .panopto{
     background-position: -790px -150px;
   }
 	.cube-sitemap,

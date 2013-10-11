@@ -23,8 +23,6 @@
  */
 
 
-
-
 function ab11_mail_from($old) {
  return 'webmaster@rappahannock.edu';
 }
@@ -56,8 +54,10 @@ add_action('admin_head', 'ab11_admin_area_favicon');
 if ( function_exists( 'add_theme_support' ) ) {
     add_theme_support( 'post-thumbnails', array( 'post', 'page' ) );
     add_image_size( 'billboard_page', 1366, 360 );
+    add_image_size( 'highlight', 230, 230, true );
+
 }
-add_theme_support( 'comments', array( 'post', 'page' ) );
+// add_theme_support( 'comments', array( 'post', 'page' ) );
 
 function ab11_add_toolbar_node( $wp_admin_bar ) {
 	global $current_user;

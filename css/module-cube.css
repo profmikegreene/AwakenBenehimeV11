@@ -8,6 +8,10 @@
 	height:180px;
 	font-weight: 100;
 	border:none;
+	background-repeat: no-repeat;
+}
+.cube:hover {
+	background-repeat: no-repeat;
 }
 .cube img {
 	z-index:0;
@@ -79,7 +83,7 @@ a.cube:hover {
 }
 @media only screen and (max-width: 1023px) {
 	.cube {
-		overflow:auto;
+		overflow:hidden;
 	}
 }
 @media only screen and (max-width: 719px) {

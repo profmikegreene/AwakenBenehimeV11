@@ -68,27 +68,30 @@ get_header(); ?>
 		</div><!--end .container-cubes -->
 		<div id="container-highlights" class="container container-cubes clear-left clearfix">
 			<div class="grid-3 highlight-title">
-					<h2 class="no-margin">Recent highlights</h2>
-					<p class="tagline no-margin">A look into the daily life of RCC.</p>
+					<h2 class="no-margin">Living in the spotlight</h2>
+					<p class="tagline no-margin">A look into the life of <em>your</em> RCC.</p>
 			</div>
 			<?php
 			global $switched;
-      switch_to_blog(2);
+      
+   
+      	$new_blog_id = 2;
+      	$category = 3;
+    
+      	// $new_blog_id = 25;
+      	// $category = 25;
+      
 
-			// Uncomment for production
-      // switch_to_blog(25);
-      //
+      switch_to_blog( $new_blog_id );
       $args = (array(
         'showposts' => 3,
-        // change category for production
-				'category' => 3,
+				'category' => $category
       ));
       $posts = get_posts($args);
 
       if($posts){
 	      foreach($posts as $post){
 	        setup_postdata($post);
-					$thumbnail = wp_get_attachment_image_src(get_post_thumbnail_id(), 'highlight');
 					$default_attr = array(
 						'class'	=> "attachment",
 						'alt'	=> trim(strip_tags( $post->post_title )),
@@ -96,15 +99,17 @@ get_header(); ?>
 						'width' => 'auto',
 						'height' => 'auto'
 					);
-					$image_url = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'highlight');
+					$image_url = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'thumbnail');
 					if (has_post_thumbnail()) {
-					echo '<a href="' . get_permalink() . '" class="cube rcc-blue grid-3 highlight" title="Posted '. get_the_time("j F Y | g:i a"). '">'.
-							 '<img src="'.$image_url[0].'" alt="'.get_the_title().'" />'.get_the_title().'</a>';
+					echo '<div class="cube rcc-blue grid-3 highlight">'.'<a href="' . get_permalink() .'""><img class="highlight-img" src="'.$image_url[0].'" alt="'.get_the_title().'" /></a>'.
+							 '<a href="' . get_permalink() . '" class="highlight-headline" title="Posted '. get_the_time("j F Y | g:i a"). '">'.
+							 get_the_title().'</a></div>';
 					}
 					else {
-						echo '<a href="' . get_permalink() . '" class="cube grid-3 rcc-blue highlight" title="Posted '. get_the_time("j F Y | g:i a"). '">'.
-							 '<img src="/wp-content/themes/css/images/default_thumb.png" alt="' . $posts[$i]->post_title . '" />'.
-							 get_the_title().'</a>';
+						echo '<div class="cube rcc-blue grid-3 highlight">'.'<a href="' . get_permalink() .'"">'.
+							 '<img class="highlight-img" src="/wp-content/themes/css/images/default_thumb.png" alt="' . $posts[$i]->post_title . '" /></a>'.
+							 '<a href="' . get_permalink() . '" class="highlight-headline" title="Posted '. get_the_time("j F Y | g:i a"). '">'.
+							 get_the_title().'</a></div>';
 					}
 
 	      }

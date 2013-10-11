@@ -30,20 +30,20 @@
             <li class="address">Kilmarnock, VA 22482</li>
           </ul>
     </div>
-    <div class="cube grid-2 cube-social cube13" id="cube13">
+    <div class="cube grid-2 cube-social facebook" id="cube-facebook">
         <h2>Like</h2>
     </div>
-    <div class="cube grid-2 cube-social cube14" id="cube14">
+    <div class="cube grid-2 cube-social twitter" id="cube-twitter">
         <h2>Follow</h2>
     </div>
-    <div class="cube grid-2 cube-social cube15" id="cube15">
+    <div class="cube grid-2 cube-social youtube" id="cube-youtube">
         <h2>Watch</h2>
     </div>
-    <div class="cube grid-2 cube-social cube16" id="cube16">
+    <div class="cube grid-2 cube-social instagram" id="cube-instagram">
         <h2>See</h2>
     </div>
-    <a href="https://alert.rappahannock.edu" class="cube grid-2 cube-social cube17 bigger" id="cube17">RCC Alert</a>
-    <div class="cube grid-2 cube-social cube18" id="cube18">
+    <a href="https://alert.rappahannock.edu" class="cube grid-2 cube-social rccalert bigger" id="cube-rccalert">RCC Alert</a>
+    <div class="cube grid-2 cube-social panopto" id="cube-panopto">
         <h2>Learn</h2>
     </div>
     <div class="cube rcc-blue no-hover cube-sitemap grid-12">
